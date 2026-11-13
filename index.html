@@ -874,8 +874,8 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
 
   <!-- Rhythmus (G7): Zweierbild randlos -->
   <section class="paar" aria-label="Zwei Stücke">
-    <figure><img src="bilder/studio/bar-vermiglio.jpg" alt="Kaffeebar Taglio 121 in Vermiglio-Rot" loading="lazy" width="1200" height="900"><figcaption>Taglio 121 · Kaffeebar · Vermiglio</figcaption></figure>
-    <figure><img src="bilder/studio/tondo201-salvia.jpg" alt="Kubus Tondo 201 in Salvia mit runden Kanten" loading="lazy" width="1200" height="900"><figcaption>Tondo 201 · Kubus · Salvia</figcaption></figure>
+    <figure><img src="bilder/raum/couchtisch.jpg" alt="Couchtisch Taglio 111 in Cobalto vor einem Sofa" loading="lazy" width="1600" height="1200"><figcaption>Taglio 111 · Couchtisch · Cobalto</figcaption></figure>
+    <figure><img src="bilder/raum/tondo201.jpg" alt="Kubus Tondo 201 in Vanadio als Beistelltisch mit Büchern" loading="lazy" width="1600" height="1200"><figcaption>Tondo 201 · Kubus · Vanadio</figcaption></figure>
   </section>
 
   <section class="sec gut band" id="musterbox">
@@ -1541,7 +1541,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
      photos: echte Fotos des Prototyps (Ordner bilder/; optional pos = Bildausschnitt auf der Karte), proto: in welcher Ausführung er gebaut wurde.
      Fotos von Nov. 2026 sind nur Testbilder. Preise sind Annahmen bis zur Kalkulation (Fahrplan KW 46–47). */
   var PRODUCTS = [
-    { id: "p13", focus: true, studio: "bilder/studio/bar.jpg", name: "Taglio 121", series: "Taglio", no: "121", slug: "taglio-121", oldSlug: "bar", kind: "Kaffeebar", form: "bar", base: 3490, show: uniItem("bar","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
+    { id: "p13", focus: true, studio: "bilder/studio/bar.jpg", raum: "bilder/raum/bar.jpg", name: "Taglio 121", series: "Taglio", no: "121", slug: "taglio-121", oldSlug: "bar", kind: "Kaffeebar", form: "bar", base: 3490, show: uniItem("bar","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
       /* Rückseite immer gefliest (wie Prototyp); breite Schublade als Option (Florian 12.11.2026), Preise Annahmen */
       options: [{ id: "schublade", label: "Breite Schublade, 70 cm (Push-to-Open)", short: "Schublade", price: 450 }],
       proto: "Salvia matt, helle Fuge",
@@ -1549,7 +1549,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
         { src: "bilder/bar-prototyp-1.jpg", alt: "Kaffeebar aus petrolfarbenen Fliesen mit Espressomaschine und Tassen in der offenen Ablage" },
         { src: "bilder/bar-prototyp-2.jpg", alt: "Kaffeebar aus petrolfarbenen Fliesen von schräg vorne, Deckel kragt über die Tassenablage aus" }
       ] },
-    { id: "p7", focus: true, studio: "bilder/studio/kubus.jpg", name: "Taglio 101 / 102", series: "Taglio", no: "101", slug: "taglio-101", oldSlug: "kubus", kind: "Kubus", form: "kubus", base: 690, show: uniItem("kubus","kontrast"), chips: ["kontrast","salvia","salbei","vanadio","vermiglio"],
+    { id: "p7", focus: true, studio: "bilder/studio/kubus.jpg", raum: "bilder/raum/kubus.jpg", name: "Taglio 101 / 102", series: "Taglio", no: "101", slug: "taglio-101", oldSlug: "kubus", kind: "Kubus", form: "kubus", base: 690, show: uniItem("kubus","kontrast"), chips: ["kontrast","salvia","salbei","vanadio","vermiglio"],
       sizes: [{ no: "101", label: "30 cm", form: "kubus", base: 690 }, { no: "102", label: "40 cm", form: "kubus40", base: 990 }],
       options: [{ id: "filz", label: "Sitzauflage Wollfilz 5 mm, rutschfest", short: "Filzauflage", price: 49 }],
       proto: "Nero matt, weiße Fuge",
@@ -1559,7 +1559,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     /* Grundpreis 5.900 € ist eine Annahme (Preise aus dem Planungsbild bewusst nicht übernommen). building: Prototyp ist im Bau, noch keine Fotos. */
     { id: "p14", name: "Taglio 161", series: "Taglio", no: "161", slug: "taglio-161", oldSlug: "tresen", kind: "Empfangstresen", form: "tresen", base: 5900, show: uniItem("tresen","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"], building: true },
     /* Grundpreis 990 € ist eine Annahme. Prototyp: hellgraue Fliese (als Quarzo matt angenommen) mit rosa Fuge (= Sonderfuge, falls Reaktionsharz). */
-    { id: "p15", focus: true, studio: "bilder/studio/kuebel.jpg", name: "Taglio 141", series: "Taglio", no: "141", slug: "taglio-141", oldSlug: "kuebel", kind: "Pflanzkübel", form: "kuebel", base: 990, show: uniItem("kuebel","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
+    { id: "p15", focus: true, studio: "bilder/studio/kuebel.jpg", raum: "bilder/raum/kuebel.jpg", name: "Taglio 141", series: "Taglio", no: "141", slug: "taglio-141", oldSlug: "kuebel", kind: "Pflanzkübel", form: "kuebel", base: 990, show: uniItem("kuebel","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
       /* Optionen (Florian 12.11.2026): Grundmodell innen offen und abgedichtet; Einsatz und Ablauf je als Option, Preise Annahmen */
       options: [{ id: "einsatz", label: "Herausnehmbarer Pflanzeinsatz", short: "Einsatz", price: 90 }, { id: "ablauf", label: "Wasserablauf mit Füßen, für draußen", short: "Ablauf", price: 90 }],
       proto: "Quarzo matt, rosa Harzfuge",
@@ -1572,7 +1572,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     { id: "p3", hidden: true, name: "Portal", kind: "Kaffeetisch", form: "kPortal", base: 1990, show: uniItem("kPortal","vermiglio"), chips: ["vermiglio","salvia","kontrast","salbei","vanadio"] },
     { id: "p4", hidden: true, name: "Block Lang", kind: "Couchtisch", form: "cBlock", base: 2790, show: it("cBlock","schach",["cotone","caffe"],"n11"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
     { id: "p5", hidden: true, name: "Sockel Lang", kind: "Couchtisch", form: "cSockel", base: 3190, show: uniItem("cSockel","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"] },
-    { id: "p19", focus: true, studio: "bilder/studio/couchtisch.jpg", name: "Taglio 111", series: "Taglio", no: "111", slug: "taglio-111", oldSlug: "couchtisch", kind: "Couchtisch", form: "cTisch", base: 2790, show: uniItem("cTisch","kobalt"), chips: ["kobalt","salvia","kontrast","salbei","vanadio"],
+    { id: "p19", focus: true, studio: "bilder/studio/couchtisch.jpg", raum: "bilder/raum/couchtisch.jpg", name: "Taglio 111", series: "Taglio", no: "111", slug: "taglio-111", oldSlug: "couchtisch", kind: "Couchtisch", form: "cTisch", base: 2790, show: uniItem("cTisch","kobalt"), chips: ["kobalt","salvia","kontrast","salbei","vanadio"],
       options: [{ id: "schublade", label: "Unsichtbare Schublade (Push-to-Open)", short: "Schublade", price: 390 }, { id: "pflanz", label: "Pflanzfeld 30 × 20 cm mit Einsatz", short: "Pflanzfeld", price: 290 }] },
     { id: "p6", name: "Taglio 112", series: "Taglio", no: "112", slug: "taglio-112", oldSlug: "portal-lang", kind: "Couchtisch", form: "cPortal", base: 2990, show: uniItem("cPortal","petrol"), chips: ["petrol","salvia","kontrast","salbei","vanadio"] },
     /* Portal quadratisch (Florian 12.11.2026): kleinerer Couchtisch in gängiger Größe 80 × 80, Preis Annahme */
@@ -1583,13 +1583,13 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     { id: "p11", name: "Taglio 151", series: "Taglio", no: "151", slug: "taglio-151", oldSlug: "stufe", kind: "Sideboard", form: "stufe", base: 3600, show: uniItem("stufe","vermiglio"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
     { id: "p12", hidden: true, coll: "rund", name: "Kapsel", kind: "Sitzbank", form: "kapsel", base: 4900, show: it("kapsel","akzent",["cobalto","marina","notte"],"n20"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
     /* Neue Entwürfe für die Kollektionen „Rund“ und „Atelier“ (11.11.2026), Preise Annahmen */
-    { id: "p16", focus: true, studio: "bilder/studio/tondo211.jpg", coll: "rund", name: "Tondo 211", series: "Tondo", no: "211", slug: "tondo-211", oldSlug: "couchtisch-rund", kind: "Couchtisch", form: "rundTisch", base: 3590, show: uniItem("rundTisch","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"] ,
+    { id: "p16", focus: true, studio: "bilder/studio/tondo211.jpg", raum: "bilder/raum/tondo211.jpg", coll: "rund", name: "Tondo 211", series: "Tondo", no: "211", slug: "tondo-211", oldSlug: "couchtisch-rund", kind: "Couchtisch", form: "rundTisch", base: 3590, show: uniItem("rundTisch","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"] ,
       options: [{ id: "schublade", label: "Unsichtbare Schublade (Push-to-Open)", short: "Schublade", price: 390 }, { id: "pflanz", label: "Pflanzfeld 30 × 20 cm mit Einsatz", short: "Pflanzfeld", price: 290 }] },
-    { id: "p21", focus: true, studio: "bilder/studio/tondo232.jpg", coll: "rund", name: "Tondo 231 – 233", series: "Tondo", no: "231", slug: "tondo-231", oldSlug: "wandregal-rund", kind: "Wandregal", form: "regal85", base: 390, show: uniItem("regal85","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
+    { id: "p21", focus: true, studio: "bilder/studio/tondo232.jpg", raum: "bilder/raum/tondo232.jpg", coll: "rund", name: "Tondo 231 – 233", series: "Tondo", no: "231", slug: "tondo-231", oldSlug: "wandregal-rund", kind: "Wandregal", form: "regal85", base: 390, show: uniItem("regal85","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
       sizes: [{ no: "231", label: "65 cm", form: "regal65", base: 320 }, { no: "232", label: "85 cm", form: "regal85", base: 390 }, { no: "233", label: "105 cm", form: "regal105", base: 460 }],
       options: [{ id: "haken", label: "3 Haken unten, schwarz", short: "Haken", price: 59 }] },
     { id: "p20", hidden: true, coll: "rund", name: "Rund Pflanzfeld", kind: "Couchtisch mit Pflanzfeld und Schublade", form: "rundPflanz", base: 3990, show: uniItem("rundPflanz","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"] },
-    { id: "p17", focus: true, studio: "bilder/studio/tondo201.jpg", coll: "rund", name: "Tondo 201 / 202", series: "Tondo", no: "201", slug: "tondo-201", oldSlug: "rund-kubus", kind: "Kubus", form: "rundKubus", base: 790, sizes: [{ no: "201", label: "35 cm", form: "rundKubus", base: 790 }, { no: "202", label: "45 cm", form: "rundKubus45", base: 1190 }],
+    { id: "p17", focus: true, studio: "bilder/studio/tondo201.jpg", raum: "bilder/raum/tondo201.jpg", coll: "rund", name: "Tondo 201 / 202", series: "Tondo", no: "201", slug: "tondo-201", oldSlug: "rund-kubus", kind: "Kubus", form: "rundKubus", base: 790, sizes: [{ no: "201", label: "35 cm", form: "rundKubus", base: 790 }, { no: "202", label: "45 cm", form: "rundKubus45", base: 1190 }],
       options: [{ id: "filz", label: "Sitzauflage Wollfilz 5 mm, rutschfest", short: "Filzauflage", price: 49 }], show: uniItem("rundKubus","vanadio"), chips: ["vanadio","salvia","kontrast","salbei","vermiglio"] },
     { id: "p18", coll: "atelier", name: "Atelier 351", series: "Atelier", no: "351", slug: "atelier-351", oldSlug: "atelier-konsole", kind: "Konsole / Sideboard", form: "atelier", base: 3900, show: uniItem("atelier","salbei"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] }
   ];
@@ -2339,6 +2339,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     if (!p) { showOnly("nf"); window.scrollTo(0, 0); document.title = "Seite nicht gefunden · FMK Furniture by FVG"; return; }
     var d = detailsOf(p), f = F[p.form], s = cards[p.id].current, u = matchUni(s);
     var gal = (p.photos || []).map(function (ph) { return { src: ph.src, alt: ph.alt, label: "Foto", cover: true }; });
+    if (p.raum) { var rg = { src: p.raum, alt: p.kind + " " + p.name + " im Wohnraum (Visualisierung)", label: "Raum", cover: true }; if (p.photos) gal.push(rg); else gal.unshift(rg); }   /* Raumbild (G8) */
     if (p.studio) gal.push({ src: p.studio, alt: p.kind + " " + p.name + " (Visualisierung)", label: "Bild", cover: true });
     gal.push({ src: (cards[p.id].photo || p.studio) ? renderImg(p) : cards[p.id].img.src, alt: p.kind + " " + p.name + " als 3D-Ansicht", label: "3D", cover: false });
     var rows = [["Maße", f.dims + " (B × T × H)"], ["Fliesen", collOf(p) === "atelier" ? "Sonderserie: " + f.tile + ", Farben und Oberflächen je nach Serie, Auswahl auf Anfrage" : "Glasiertes Feinsteinzeug " + f.tile.replace("Fliese ", "") + (p.proto ? ", Prototyp: " + p.proto : "") + ", 54 Farben wählbar"], ["Fuge", "Fugenmörtel, 27 Farben ohne Aufpreis; bunte Fugen als Reaktionsharz-Sonderfuge"], ["Serie", COLLS[collOf(p)].name + (collOf(p) !== "raster" ? " (Entwurf)" : "")], ["Kanten", collOf(p) === "rund" ? (f.parts()[0].t === "rbox" ? "Viertelstab-Formstücke in Fliesenfarbe, Fugen im Raster der Flächen" : "Gerundete Formen (Entwurf, wird überarbeitet)") : "Alle Außenkanten auf Gehrung"], ["Korpus", d.korpus]].concat(d.extra).concat([["Gewicht", d.gewicht], ["Lieferzeit", LIEFERZEIT], ["Lieferung", d.versand], ["Pflege", PFLEGE]]);
