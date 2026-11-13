@@ -22,6 +22,8 @@
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("lib/fonts/inter-latin-400-normal.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("lib/fonts/inter-latin-500-normal.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("lib/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url("lib/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); }   /* OFL, Überschriften (Florian 13.11.2026) */
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url("lib/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); }
 /* CI der FVG Fliesen Verlege GmbH (fvg-fliesen.de, Stand 11.11.2026): Nunito Sans, Grün #009E4D für Überschriften und Aktionen,
    Rot #B90738 als Akzent (Quadrate wie im FVG-Logo), Text #333, Flächen Weiß und Hellgrau. FMK Furniture läuft als Unterseite „by FVG“. */
 :root {
@@ -597,6 +599,49 @@ footer .foot img { height: 30px; width: auto; display: block; }
 .faq-group details a { color: var(--ink); text-decoration-color: var(--green); }
 .faq-group { grid-auto-flow: row dense; }
 @media (max-width: 1020px) { .faq-group { grid-template-columns: minmax(0, 1fr); } .faq-group details { grid-column: 1; } .faq-group h2 { position: static; } .faq-group h2 + details { grid-row: auto; } }
+
+/* ===== Ruhe (G4/G5, 13.11.2026): weniger Kästen und Pillen, ruhigere Karten. Zum Zurücknehmen nur diesen Block löschen. ===== */
+:root { --r: 4px; }
+/* Pillen nur noch für Hauptknöpfe (.cta, .btn, .cart-btn, .add); alles andere fast eckig */
+.pill, .tc-photo, .close, .tier, .ctag, .rc-tabs a, .rc-draft, .mat-pick span, .vs-vs-tag, .vs-ways .vs-tag, .pd-status, .neu, #v-photo-cap, .vo-step, .vo-lab { border-radius: 3px; }
+.neu { font-size: 10.5px; letter-spacing: .08em; padding: 3px 6px; }
+.linie-pics img { border-radius: var(--r); }
+/* Zwei Serien: keine Kästen, nur Bild und Text mit feiner Linie */
+.linie { background: none; padding: 0; border-radius: 0; gap: 14px; }
+.linie:hover { transform: none; } .linie:hover .linie-go { text-decoration: underline; text-underline-offset: 4px; }
+.linie-text { border-top: 1px solid var(--line); padding-top: 14px; }
+/* „Was ist möglich“: Spalten mit feiner Linie statt umrandeter Kästen */
+.moeglich { gap: 0; }
+.moeglich a { border: 0; border-left: 1px solid var(--line); border-radius: 0; padding: 4px 18px; }
+.moeglich li:first-child a { border-left: 0; padding-left: 0; }
+.moeglich a:hover b { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 1020px) { .moeglich { row-gap: 18px; } .moeglich li:nth-child(3) a { border-left: 0; padding-left: 0; } }
+/* Flächen-Kästen ohne Hintergrund, Abgrenzung über Linie */
+.pd-miter, .ab-split { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 22px 0 0; }
+/* Abzeichen auf Bildern: klein, ruhig */
+.badge { font-size: 11px; letter-spacing: .02em; padding: 5px 8px; border-radius: 3px; left: 10px; top: 10px; }
+/* G5 Karten: Farb-Chips und Foto-Knopf erst beim Überfahren (nur Geräte mit Maus); auf dem Handy bleiben sie sichtbar */
+@media (hover: hover) {
+  .prod .chips { opacity: 0; transform: translateY(-4px); transition: opacity .3s ease, transform .3s ease; }
+  .prod:hover .chips, .prod:focus-within .chips { opacity: 1; transform: none; }
+}
+.prod .kind { font-size: 13.5px; }
+
+/* ===== Schrift (G1, 13.11.2026): Instrument Serif für Überschriften, Inter bleibt für Text und Bedienung ===== */
+:root { --serif: "Instrument Serif", Georgia, "Times New Roman", serif; }
+h1, h2, h3, .pd-no, .prod-row h4, #v-title { font-family: var(--serif); font-weight: 400; letter-spacing: -.005em; }
+h1 { font-size: clamp(48px, 7.8vw, 124px); line-height: .98; }
+h2 { font-size: clamp(34px, 4.2vw, 60px); line-height: 1.02; }
+h3 { line-height: 1.1; }
+.hero-text h1 { font-size: clamp(46px, 6.4vw, 96px); line-height: .98; }
+.hero-text h1 .h1-sub { font-style: italic; }
+.prod-row h4 { font-size: 24px; line-height: 1.1; }
+.ideen-grid .prod-row h4 { font-size: 21px; }
+.pd-title .pd-no { font-size: clamp(72px, 9vw, 132px); letter-spacing: -.01em; }
+#v-title { font-size: 34px; }
+.linie-text h2 { font-size: clamp(32px, 3.4vw, 46px); }
+.linie-head h3 { font-size: clamp(30px, 3vw, 40px); }
+.gebaut b, .moeglich b, .trust b { font-family: var(--body); }
 </style>
 
 <header class="top gut">
@@ -1428,6 +1473,7 @@ footer .foot img { height: 30px; width: auto; display: block; }
   ];
   /* Ausgeblendet (Florian, 11.11.2026): Trommel, Welle, Kapsel – mit flachen Fliesen + Viertelstab nicht baubar. Formen bleiben in F, Stücke erscheinen nicht im Shop. */
   PRODUCTS = PRODUCTS.filter(function (p) { return !p.hidden; });
+  PRODUCTS.forEach(function (p) { if (p.studio) document.querySelectorAll('img[data-pid="' + p.id + '"]').forEach(function (im) { im.src = p.studio; }); });   /* Studio-Bilder sofort, nicht erst nach der 3D-Berechnung */
   /* Kollektionen (Entwurf 11.11.2026). Produkte ohne coll gehören zu „raster“. */
   var COLLS = {
     raster: { name: "Taglio", text: "Serie 100: eckig, jede Außenkante auf Gehrung, Fliese 10 × 10 in über 50 Farben." },
