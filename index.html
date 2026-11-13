@@ -671,6 +671,22 @@ h3 { line-height: 1.1; }
   .lz.go-ready text { opacity: 0; transition: opacity .8s ease 1.2s; } .lz.go-ready.go text { opacity: 1; }
   .lz.go-ready [fill]:not([fill="none"]):not(text) { fill-opacity: 0; transition: fill-opacity .9s ease 1s; } .lz.go-ready.go [fill]:not([fill="none"]):not(text) { fill-opacity: 1; }
 }
+
+/* ===== Rhythmus (G7) und Fuge als Leitlinie (G6), 13.11.2026 ===== */
+:root { --fugenlinie: #D2C3A6; }
+.zitat { padding-block: clamp(80px, 12vw, 180px); }
+.zitat blockquote { margin: 0; max-width: 1100px; border: 0; padding: 0; }
+.zitat blockquote p { border: 0; padding: 0; }
+.zitat p { font-family: var(--serif); font-style: italic; font-size: clamp(38px, 6vw, 92px); line-height: 1.02; letter-spacing: -.01em; margin: 0 0 22px; }
+.zitat footer { color: var(--muted); font-size: 15px; max-width: 46ch; border: 0; padding: 0; }
+.paar { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--fugenlinie); margin-block: clamp(40px, 6vw, 96px); }
+.paar figure { margin: 0; position: relative; background: #fff; }
+.paar img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.paar figcaption { position: absolute; left: 18px; bottom: 16px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #333; }
+@media (max-width: 720px) { .paar { grid-template-columns: 1fr; } .paar img { aspect-ratio: 4 / 3; } }
+/* Fuge als Leitlinie: zwischen hellen Abschnitten eine feine Linie in Fugenfarbe, die links „um die Ecke“ nach unten läuft */
+main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max { position: relative; padding-top: clamp(36px, 4vw, 56px); }
+main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px; border-top: 1.5px solid var(--fugenlinie); border-left: 1.5px solid var(--fugenlinie); pointer-events: none; }
 </style>
 
 <header class="top gut">
@@ -771,6 +787,13 @@ h3 { line-height: 1.1; }
     </div>
   </section>
 
+  <!-- Rhythmus (G7, 13.11.2026): ruhiges Zitat mit viel Luft -->
+  <section class="sec gut zitat" aria-label="Zitat">
+    <div class="max">
+      <blockquote><p>„Schnittkante ist nie gleich Werkkante.“</p><footer>Fachregel aus der Werkstatt – darum wird bei uns kein sichtbares Formstück zugeschnitten.</footer></blockquote>
+    </div>
+  </section>
+
   <section class="sec gut">
     <div class="max" style="display:grid;gap:28px">
       <div class="teaser">
@@ -847,6 +870,12 @@ h3 { line-height: 1.1; }
       </ol>
       <p class="how-more"><a href="#/versand">Lieferung und Lieferzeit →</a></p>
     </div>
+  </section>
+
+  <!-- Rhythmus (G7): Zweierbild randlos -->
+  <section class="paar" aria-label="Zwei Stücke">
+    <figure><img src="bilder/studio/bar-vermiglio.jpg" alt="Kaffeebar Taglio 121 in Vermiglio-Rot" loading="lazy" width="1200" height="900"><figcaption>Taglio 121 · Kaffeebar · Vermiglio</figcaption></figure>
+    <figure><img src="bilder/studio/tondo201-salvia.jpg" alt="Kubus Tondo 201 in Salvia mit runden Kanten" loading="lazy" width="1200" height="900"><figcaption>Tondo 201 · Kubus · Salvia</figcaption></figure>
   </section>
 
   <section class="sec gut band" id="musterbox">
