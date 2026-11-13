@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img"><title>Querschnitt: stumpf gesetzt gegen Gehrung</title>
+<g class="draw" fill="none" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+
+<g transform="translate(40 40)">
+<path d="M0 0 H130 V20 H20 V150 H0 Z" />
+<path d="M0 0 H130" stroke="#63A2A7" stroke-width="3"/><path d="M0 0 V150" stroke="#63A2A7" stroke-width="3"/>
+<path d="M-4 -4 L 26 26" stroke="#C9B79A" stroke-width="9" stroke-linecap="butt" opacity=".9"/>
+<text x="0" y="186" font-family="Inter, sans-serif" font-size="14" fill="#444" stroke="none">stumpf: Fuge füllt die Ecke</text>
+</g>
+<g transform="translate(220 40)">
+<path d="M0 0 H130 V20 H20 Z"/><path d="M-2 2 V150 H18 V22 Z"/>
+<path d="M0 0 H130" stroke="#63A2A7" stroke-width="3"/><path d="M-2 2 V150" stroke="#63A2A7" stroke-width="3"/>
+<path d="M-1 1 L 19 21" stroke="#C9B79A" stroke-width="2"/>
+<text x="0" y="186" font-family="Inter, sans-serif" font-size="14" fill="#444" stroke="none">Gehrung: 45°, Fuge 1,5 mm</text>
+</g>
+</g></svg>
