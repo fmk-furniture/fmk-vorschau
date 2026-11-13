@@ -687,6 +687,22 @@ h3 { line-height: 1.1; }
 /* Fuge als Leitlinie: zwischen hellen Abschnitten eine feine Linie in Fugenfarbe, die links „um die Ecke“ nach unten läuft */
 main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max { position: relative; padding-top: clamp(36px, 4vw, 56px); }
 main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px; border-top: 1.5px solid var(--fugenlinie); border-left: 1.5px solid var(--fugenlinie); pointer-events: none; }
+
+/* ===== „Fliese für Fliese“ (G9) ===== */
+.ffl { position: relative; height: 320vh; background: var(--plate); }
+.ffl-stick { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: 4vw; padding-inline: max(16px, 4vw); }
+.ffl-stage { width: 100%; height: 78vh; }
+.ffl-stage canvas { display: block; width: 100% !important; height: 100% !important; }
+.ffl-k { font: 500 12px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.ffl-h { margin: 0 0 18px; transition: opacity .4s; }
+.ffl-n { font-family: var(--serif); font-size: clamp(56px, 7vw, 104px); line-height: .9; margin: 0 0 26px; }
+.ffl-steps { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; }
+.ffl-steps li { font-size: 14px; color: var(--muted); padding-top: 10px; border-top: 1.5px solid var(--line); transition: color .3s, border-color .3s; }
+.ffl-steps li.on { color: var(--ink); border-color: var(--fugenlinie, #D2C3A6); }
+.ffl-sig { margin: 26px 0 0; display: inline-block; padding: 10px 16px; border-radius: 3px; background: linear-gradient(100deg, #b9944a, #e4c77f 45%, #c29a4b); color: #3a2e1a; font: 500 13px/1 var(--body); letter-spacing: .04em; opacity: 0; transform: translateY(8px); transition: opacity .6s, transform .6s; }
+.ffl-sig.on { opacity: 1; transform: none; }
+@media (max-width: 820px) { .ffl-stick { grid-template-columns: minmax(0, 1fr); align-content: center; gap: 8px; } .ffl-stage { height: 52vh; } .ffl-n { margin-bottom: 14px; } }
+@media (prefers-reduced-motion: reduce) { .ffl { height: auto; } .ffl-stick { position: static; height: auto; padding-block: 64px; } }
 </style>
 
 <header class="top gut">
@@ -873,6 +889,20 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
   </section>
 
   <!-- Rhythmus (G7): Zweierbild randlos -->
+  <!-- G9 „Fliese für Fliese“ (13.11.2026): Scroll-Animation, Kubus Taglio 101 setzt sich zusammen, wird verfugt und signiert -->
+  <section class="ffl" id="ffl" aria-label="Fliese für Fliese: so entsteht ein Kubus">
+    <div class="ffl-stick">
+      <div class="ffl-stage" id="ffl-stage" aria-hidden="true"></div>
+      <div class="ffl-text">
+        <p class="ffl-k">Taglio 101 · Kubus</p>
+        <h2 class="ffl-h" id="ffl-h">Fliese für Fliese.</h2>
+        <p class="ffl-n"><span id="ffl-n">0</span> / 45 Fliesen</p>
+        <ol class="ffl-steps"><li data-s="0">Gesetzt</li><li data-s="1">Verfugt</li><li data-s="2">Signiert</li></ol>
+        <p class="ffl-sig" id="ffl-sig">FMK Furniture · Taglio 101 · Nr. 007</p>
+      </div>
+    </div>
+  </section>
+
   <section class="paar" aria-label="Zwei Stücke">
     <figure><img src="bilder/raum/couchtisch.jpg" alt="Couchtisch Taglio 111 in Cobalto vor einem Sofa" loading="lazy" width="1600" height="1200"><figcaption>Taglio 111 · Couchtisch · Cobalto</figcaption></figure>
     <figure><img src="bilder/raum/tondo201.jpg" alt="Kubus Tondo 201 in Vanadio als Beistelltisch mit Büchern" loading="lazy" width="1600" height="1200"><figcaption>Tondo 201 · Kubus · Vanadio</figcaption></figure>
@@ -2482,6 +2512,61 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     });
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("go"); io.unobserve(e.target); } }); }, { threshold: 0.4 });
     list.forEach(function (svg) { io.observe(svg); });
+  })();
+  (function () {   /* G9 „Fliese für Fliese“: eigener kleiner 3D-Aufbau, Fortschritt = Scroll-Position im Abschnitt */
+    var sec = $("ffl"), host = $("ffl-stage"); if (!sec || !host || !window.THREE) return;
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var R, S, G, tiles = [], core, coreMat, started = false, last = -1;
+    var M = 10, T = 0.68, N = 3, L = M * N, TS = M - 0.15;
+    var ADH = new THREE.Color(0x9C988F).convertSRGBToLinear(), JAS = new THREE.Color(hex("n11")).convertSRGBToLinear();
+    function build() {
+      R = new THREE.WebGLRenderer({ antialias: true }); R.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); host.appendChild(R.domElement);
+      S = Stage(R); G = new THREE.Group(); S.scene.add(G);
+      var tileMat = new THREE.MeshStandardMaterial({ color: new THREE.Color(hex("salvia")).convertSRGBToLinear(), roughness: 0.42 });
+      coreMat = new THREE.MeshStandardMaterial({ color: ADH.clone(), roughness: 0.95 });
+      core = new THREE.Mesh(new THREE.BoxGeometry(L - 0.24, L - 0.12, L - 0.24), coreMat); core.position.y = (L - 0.12) / 2; core.castShadow = core.receiveShadow = true; G.add(core);
+      var geoS = new THREE.BoxGeometry(TS, TS, T), geoT = new THREE.BoxGeometry(TS, T, TS);
+      function add(geo, x, y, z, dir, order) {
+        var m = new THREE.Mesh(geo, tileMat); m.castShadow = m.receiveShadow = true; m.userData = { home: new THREE.Vector3(x, y, z), dir: dir, order: order }; G.add(m); tiles.push(m);
+      }
+      var h = L / 2, c = function (i) { return -h + M / 2 + i * M; };
+      for (var row = 0; row < N; row++) for (var i = 0; i < N; i++) {   /* Seiten, Reihe für Reihe von unten */
+        var y = M / 2 + row * M;
+        add(geoS, c(i), y, h - T / 2, new THREE.Vector3(0, 0, 1), row * 100 + 0 + i);
+        add(geoS.clone().rotateY(PI / 2), h - T / 2, y, -c(i), new THREE.Vector3(1, 0, 0), row * 100 + 10 + i);
+        add(geoS, -c(i), y, -h + T / 2, new THREE.Vector3(0, 0, -1), row * 100 + 20 + i);
+        add(geoS.clone().rotateY(PI / 2), -h + T / 2, y, c(i), new THREE.Vector3(-1, 0, 0), row * 100 + 30 + i);
+      }
+      for (var a = 0; a < N; a++) for (var b = 0; b < N; b++) add(geoT, c(a), L - T / 2, c(b), new THREE.Vector3(0, 1, 0), 1000 + a * N + b);
+      tiles.sort(function (p, q) { return p.userData.order - q.userData.order; });
+      fit(); S.frame(G, host.clientWidth / Math.max(1, host.clientHeight), { k: 1.15, dir: new THREE.Vector3(0.9, 0.62, 1.15) });
+      started = true;
+    }
+    function fit() { var w = host.clientWidth, h = host.clientHeight; R.setSize(w, h, false); S.camera.aspect = w / h; S.camera.updateProjectionMatrix(); last = -1; }
+    function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
+    function draw(p) {
+      if (!started) return; if (Math.abs(p - last) < 0.0005) return; last = p;
+      var place = Math.min(1, p / 0.62), n = tiles.length, shown = 0;
+      tiles.forEach(function (m, k) {
+        var t0 = k / n * 0.92, t = ease((place - t0) / 0.08), d = m.userData;
+        m.visible = t > 0; if (t >= 1) shown++;
+        m.position.copy(d.home).addScaledVector(d.dir, (1 - t) * 26).add(new THREE.Vector3(0, (1 - t) * 8, 0));
+        m.rotation.set((1 - t) * 0.5 * d.dir.z, (1 - t) * 0.6, (1 - t) * -0.4 * d.dir.x);
+      });
+      var g = ease((p - 0.66) / 0.16); coreMat.color.copy(ADH).lerp(JAS, g);
+      G.rotation.y = -0.5 + p * 0.9;
+      $("ffl-n").textContent = shown;
+      var stp = p < 0.64 ? 0 : p < 0.84 ? 1 : 2;
+      Array.prototype.forEach.call(sec.querySelectorAll(".ffl-steps li"), function (li) { li.classList.toggle("on", +li.dataset.s <= stp); });
+      $("ffl-h").textContent = ["Fliese für Fliese.", "Von Hand verfugt.", "Signiert."][stp];
+      $("ffl-sig").classList.toggle("on", stp === 2);
+      R.render(S.scene, S.camera);
+    }
+    function progress() { var r = sec.getBoundingClientRect(), span = r.height - innerHeight; return span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 1; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !started) { build(); draw(reduce ? 1 : progress()); } }); }, { rootMargin: "200px" });
+    io.observe(sec);
+    if (!reduce) window.addEventListener("scroll", function () { if (started) requestAnimationFrame(function () { draw(progress()); }); }, { passive: true });
+    window.addEventListener("resize", function () { if (started) { fit(); draw(reduce ? 1 : progress()); } });
   })();
   window.addEventListener("hashchange", route);
 
