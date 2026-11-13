@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 940" width="1500" height="940" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M2 8 L8 2" stroke="#2F5D8A" stroke-width="1.6"/></marker>
+<pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#C9C1A8" stroke-width="2"/></pattern></defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="12" y="12" width="1476" height="916" fill="none" stroke="#14161A" stroke-width="1.5"/>
+<rect x="60.0" y="196.0" width="480.0" height="160.0" fill="#E9E6DF" stroke="#14161A" stroke-width="1.6"/>
+<line x1="100.0" y1="356.0" x2="100.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="140.0" y1="356.0" x2="140.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="180.0" y1="356.0" x2="180.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="220.0" y1="356.0" x2="220.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="260.0" y1="356.0" x2="260.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="300.0" y1="356.0" x2="300.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="340.0" y1="356.0" x2="340.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="380.0" y1="356.0" x2="380.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="420.0" y1="356.0" x2="420.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="460.0" y1="356.0" x2="460.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="500.0" y1="356.0" x2="500.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="316.0" x2="540.0" y2="316.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="276.0" x2="540.0" y2="276.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="236.0" x2="540.0" y2="236.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<rect x="140.0" y="196.0" width="160.0" height="40.0" fill="none" stroke="#2F5D8A" stroke-width="1.8" stroke-dasharray="6 4"/>
+<rect x="78.0" y="356.0" width="12.0" height="4.0" fill="#2A2826" stroke="#14161A" stroke-width="0.6"/>
+<rect x="510.0" y="356.0" width="12.0" height="4.0" fill="#2A2826" stroke="#14161A" stroke-width="0.6"/>
+<text x="60.0" y="162.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Vorderansicht</text>
+<line x1="60.0" y1="360.0" x2="60.0" y2="400.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="540.0" y1="360.0" x2="540.0" y2="400.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="60.0" y1="394.0" x2="540.0" y2="394.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="300.0" y="389.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">120</text>
+<line x1="540.0" y1="360.0" x2="576.0" y2="360.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="540.0" y1="196.0" x2="576.0" y2="196.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="570.0" y1="360.0" x2="570.0" y2="196.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="576.0" y="282.0" font-size="12" text-anchor="start" font-weight="normal" fill="#2F5D8A">41</text>
+<line x1="60.0" y1="360.0" x2="38.0" y2="360.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="60.0" y1="356.0" x2="38.0" y2="356.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="44.0" y1="360.0" x2="44.0" y2="356.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="38.0" y="362.0" font-size="12" text-anchor="end" font-weight="normal" fill="#2F5D8A">1 Füße</text>
+<line x1="140.0" y1="196.0" x2="140.0" y2="178.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="300.0" y1="196.0" x2="300.0" y2="178.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="140.0" y1="184.0" x2="300.0" y2="184.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="220.0" y="179.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">40 Schublade (Option)</text>
+<rect x="60.0" y="480.0" width="480.0" height="240.0" fill="#E9E6DF" stroke="#14161A" stroke-width="1.6"/>
+<line x1="100.0" y1="720.0" x2="100.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="140.0" y1="720.0" x2="140.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="180.0" y1="720.0" x2="180.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="220.0" y1="720.0" x2="220.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="260.0" y1="720.0" x2="260.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="300.0" y1="720.0" x2="300.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="340.0" y1="720.0" x2="340.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="380.0" y1="720.0" x2="380.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="420.0" y1="720.0" x2="420.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="460.0" y1="720.0" x2="460.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="500.0" y1="720.0" x2="500.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="680.0" x2="540.0" y2="680.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="640.0" x2="540.0" y2="640.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="600.0" x2="540.0" y2="600.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="560.0" x2="540.0" y2="560.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="60.0" y1="520.0" x2="540.0" y2="520.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<rect x="380.0" y="520.0" width="120.0" height="80.0" fill="#5A4535" stroke="#14161A" stroke-width="1.6"/>
+<text x="60.0" y="446.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Draufsicht (vorne = unten)</text>
+<line x1="60.0" y1="720.0" x2="60.0" y2="760.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="540.0" y1="720.0" x2="540.0" y2="760.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="60.0" y1="754.0" x2="540.0" y2="754.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="300.0" y="749.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">120</text>
+<line x1="540.0" y1="720.0" x2="576.0" y2="720.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="540.0" y1="480.0" x2="576.0" y2="480.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="570.0" y1="720.0" x2="570.0" y2="480.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="576.0" y="604.0" font-size="12" text-anchor="start" font-weight="normal" fill="#2F5D8A">60</text>
+<line x1="380.0" y1="480.0" x2="380.0" y2="462.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="500.0" y1="480.0" x2="500.0" y2="462.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="380.0" y1="468.0" x2="500.0" y2="468.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="440.0" y="463.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">30</text>
+<line x1="60.0" y1="600.0" x2="38.0" y2="600.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="60.0" y1="520.0" x2="38.0" y2="520.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="44.0" y1="600.0" x2="44.0" y2="520.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="38.0" y="564.0" font-size="12" text-anchor="end" font-weight="normal" fill="#2F5D8A">20</text>
+<text x="440.0" y="628.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#6B6E70">Pflanzfeld (Option)</text>
+<rect x="700.0" y="196.0" width="240.0" height="160.0" fill="#E9E6DF" stroke="#14161A" stroke-width="1.6"/>
+<line x1="740.0" y1="356.0" x2="740.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="780.0" y1="356.0" x2="780.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="820.0" y1="356.0" x2="820.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="860.0" y1="356.0" x2="860.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="900.0" y1="356.0" x2="900.0" y2="196.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="700.0" y1="316.0" x2="940.0" y2="316.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="700.0" y1="276.0" x2="940.0" y2="276.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="700.0" y1="236.0" x2="940.0" y2="236.0" stroke="#B8B4AA" stroke-width="0.8"/>
+<rect x="718.0" y="356.0" width="12.0" height="4.0" fill="#2A2826" stroke="#14161A" stroke-width="0.6"/>
+<rect x="910.0" y="356.0" width="12.0" height="4.0" fill="#2A2826" stroke="#14161A" stroke-width="0.6"/>
+<text x="700.0" y="162.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Seitenansicht</text>
+<line x1="700.0" y1="360.0" x2="700.0" y2="400.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="940.0" y1="360.0" x2="940.0" y2="400.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="700.0" y1="394.0" x2="940.0" y2="394.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="820.0" y="389.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">60</text>
+<line x1="940.0" y1="360.0" x2="976.0" y2="360.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="940.0" y1="196.0" x2="976.0" y2="196.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="970.0" y1="360.0" x2="970.0" y2="196.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="976.0" y="282.0" font-size="12" text-anchor="start" font-weight="normal" fill="#2F5D8A">41</text>
+<rect x="1080.0" y="200.0" width="240.0" height="160.0" fill="#FFFFFF" stroke="#14161A" stroke-width="1.6"/>
+<rect x="1084.0" y="204.0" width="232.0" height="152.0" fill="#C9C1A8" stroke="#14161A" stroke-width="0.8"/>
+<rect x="1092.0" y="212.0" width="216.0" height="136.0" fill="#FFFFFF" stroke="#14161A" stroke-width="0.8"/>
+<rect x="1080.0" y="200.8" width="4.0" height="38.4" fill="#E9E6DF" stroke="#14161A" stroke-width="0.8"/>
+<rect x="1084.0" y="202.4" width="180.0" height="35.2" fill="#E8D5B5" stroke="#14161A" stroke-width="0.9"/>
+<text x="1080.0" y="166.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Schnitt B–B durch Schublade (vorne = links)</text>
+<line x1="1080.0" y1="200.0" x2="1080.0" y2="182.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="1264.0" y1="200.0" x2="1264.0" y2="182.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="1080.0" y1="188.0" x2="1264.0" y2="188.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="1172.0" y="183.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">Auszug 45</text>
+<line x1="1080.0" y1="360.0" x2="1080.0" y2="400.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="1320.0" y1="360.0" x2="1320.0" y2="400.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="1080.0" y1="394.0" x2="1320.0" y2="394.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="1200.0" y="389.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">60</text>
+<rect x="700.0" y="560.0" width="240.0" height="160.0" fill="#FFFFFF" stroke="#14161A" stroke-width="1.6"/>
+<rect x="704.0" y="564.0" width="232.0" height="152.0" fill="#C9C1A8" stroke="#14161A" stroke-width="0.8"/>
+<rect x="712.0" y="572.0" width="216.0" height="136.0" fill="#FFFFFF" stroke="#14161A" stroke-width="0.8"/>
+<rect x="820.0" y="560.0" width="80.0" height="80.0" fill="#F7F5F0" stroke="#14161A" stroke-width="1"/>
+<rect x="820.0" y="560.0" width="4.0" height="40.0" fill="#E9E6DF" stroke="#14161A" stroke-width="0.6"/>
+<rect x="896.0" y="560.0" width="4.0" height="40.0" fill="#E9E6DF" stroke="#14161A" stroke-width="0.6"/>
+<rect x="826.0" y="576.0" width="68.0" height="60.0" fill="#5A4535" stroke="#2F5D8A" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="700.0" y="526.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Schnitt C–C durch Pflanzfeld</text>
+<line x1="940.0" y1="640.0" x2="976.0" y2="640.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="940.0" y1="560.0" x2="976.0" y2="560.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="970.0" y1="640.0" x2="970.0" y2="560.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="976.0" y="604.0" font-size="12" text-anchor="start" font-weight="normal" fill="#2F5D8A">20 tief</text>
+<line x1="820.0" y1="560.0" x2="820.0" y2="542.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="900.0" y1="560.0" x2="900.0" y2="542.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="820.0" y1="548.0" x2="900.0" y2="548.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="860.0" y="543.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">20</text>
+<rect x="908" y="788" width="580" height="140" fill="#FFFFFF" stroke="#14161A" stroke-width="1.2"/>
+<line x1="908" y1="830" x2="1488" y2="830" stroke="#14161A" stroke-width="0.8"/>
+<text x="920" y="816" font-size="20" font-weight="bold" fill="#14161A">FMK Furniture · Taglio 111 · Couchtisch 120 × 60 × 41</text>
+<text x="920" y="852" font-size="12.5" fill="#14161A">Entwurf (Serie Taglio) · Fliese 10 × 10 · Korpus Hartschaum-Trägerplatten 20 mm (A)</text>
+<text x="920" y="872" font-size="12.5" fill="#6B6E70">Maße in cm, Fertigmaße inkl. Fliese · Fliesenraster 10 cm (98,5 mm + ca. 1,5 mm Fuge)</text>
+<text x="920" y="892" font-size="12.5" fill="#6B6E70">Alle Außenkanten auf Gehrung · Zeichnung nicht maßstäblich ausdrucken</text>
+<text x="920" y="912" font-size="12.5" fill="#6B6E70">Stand: 12.11.2026 · erstellt von Claude · prüfen: Florian</text>
+<text x="28" y="804" font-size="14" font-weight="bold" fill="#14161A">Hinweise / offene Punkte</text>
+<text x="28" y="826" font-size="12.5" fill="#14161A">– Schublade: 4 Fliesen breit (Spalte 3–6 von links), oberste Reihe; Front = Fliesen im Raster, Spalt = Fugenbreite ohne Fuge.</text>
+<text x="28" y="844" font-size="12.5" fill="#14161A">– Spaltmaß für Push-to-Open prüfen (1,5 mm vs. 2–3 mm), Vollauszug 450, Gehäuse Multiplex 15 mm eingeklebt.</text>
+<text x="28" y="862" font-size="12.5" fill="#14161A">– Pflanzfeld 30 × 20, 1 Fliese von rechts und hinten, 20 cm tief, innen oberste Reihe gefliest, Einsatz (3D-Druck) herausnehmbar.</text>
+<text x="28" y="880" font-size="12.5" fill="#14161A">– Schublade und Pflanzfeld gleichzeitig möglich (keine Überschneidung). Überlauf/Wasser im Pflanzfeld klären.</text>
+<text x="28" y="898" font-size="12.5" fill="#14161A">– Höhe 41 cm: Korpus 40 cm auf 4 Füßen Ø 3 cm × 1 cm, 6 cm eingerückt (Schattenfuge) – Florian 12.11.2026.</text>
+</svg>

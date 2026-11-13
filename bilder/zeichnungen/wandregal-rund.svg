@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 940" width="1500" height="940" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M2 8 L8 2" stroke="#2F5D8A" stroke-width="1.6"/></marker>
+<pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#C9C1A8" stroke-width="2"/></pattern></defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="12" y="12" width="1476" height="916" fill="none" stroke="#14161A" stroke-width="1.5"/>
+<rect x="60.0" y="195.0" width="595.0" height="35.0" fill="#E9E6DF" stroke="#14161A" stroke-width="1.6"/>
+<line x1="77.5" y1="230.0" x2="77.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="147.5" y1="230.0" x2="147.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="217.5" y1="230.0" x2="217.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="287.5" y1="230.0" x2="287.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="357.5" y1="230.0" x2="357.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="427.5" y1="230.0" x2="427.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="497.5" y1="230.0" x2="497.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="567.5" y1="230.0" x2="567.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="637.5" y1="230.0" x2="637.5" y2="195.0" stroke="#B8B4AA" stroke-width="0.9"/>
+<line x1="60.0" y1="212.5" x2="655.0" y2="212.5" stroke="#B8B4AA" stroke-width="0.9"/>
+<text x="60.0" y="161.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Vorderansicht (Länge 85, 8 Fliesen)</text>
+<line x1="60.0" y1="230.0" x2="60.0" y2="266.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="655.0" y1="230.0" x2="655.0" y2="266.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="60.0" y1="260.0" x2="655.0" y2="260.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="357.5" y="255.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">85</text>
+<line x1="655.0" y1="230.0" x2="691.0" y2="230.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="655.0" y1="195.0" x2="691.0" y2="195.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="685.0" y1="230.0" x2="685.0" y2="195.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="691.0" y="216.5" font-size="12" text-anchor="start" font-weight="normal" fill="#2F5D8A">5</text>
+<text x="357.5" y="187.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#6B6E70">Mittelfuge: oberer und unterer Viertelstab</text>
+<rect x="60.0" y="402.5" width="595.0" height="157.5" fill="#E9E6DF" stroke="#14161A" stroke-width="1.6"/>
+<line x1="147.5" y1="542.5" x2="147.5" y2="402.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="217.5" y1="542.5" x2="217.5" y2="402.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="287.5" y1="542.5" x2="287.5" y2="402.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="357.5" y1="542.5" x2="357.5" y2="402.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="427.5" y1="542.5" x2="427.5" y2="402.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="497.5" y1="542.5" x2="497.5" y2="402.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="567.5" y1="542.5" x2="567.5" y2="402.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="77.5" y1="472.5" x2="637.5" y2="472.5" stroke="#B8B4AA" stroke-width="0.8"/>
+<line x1="77.5" y1="560.0" x2="77.5" y2="402.5" stroke="#14161A" stroke-width="0.9"/>
+<line x1="637.5" y1="560.0" x2="637.5" y2="402.5" stroke="#14161A" stroke-width="0.9"/>
+<line x1="60.0" y1="542.5" x2="655.0" y2="542.5" stroke="#14161A" stroke-width="0.9"/>
+<rect x="130.0" y="402.5" width="8.4" height="105.0" fill="none" stroke="#2F5D8A" stroke-width="1.4" stroke-dasharray="5 3"/>
+<rect x="576.6" y="402.5" width="8.4" height="105.0" fill="none" stroke="#2F5D8A" stroke-width="1.4" stroke-dasharray="5 3"/>
+<circle cx="147.5" cy="507.5" r="5" fill="none" stroke="#2F5D8A" stroke-width="1.4"/>
+<circle cx="357.5" cy="507.5" r="5" fill="none" stroke="#2F5D8A" stroke-width="1.4"/>
+<circle cx="567.5" cy="507.5" r="5" fill="none" stroke="#2F5D8A" stroke-width="1.4"/>
+<text x="60.0" y="368.5" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Draufsicht (Länge 85)</text>
+<line x1="60.0" y1="560.0" x2="60.0" y2="600.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="655.0" y1="560.0" x2="655.0" y2="600.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="60.0" y1="594.0" x2="655.0" y2="594.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="357.5" y="589.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">85</text>
+<line x1="655.0" y1="560.0" x2="691.0" y2="560.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="655.0" y1="402.5" x2="691.0" y2="402.5" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="685.0" y1="560.0" x2="685.0" y2="402.5" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="691.0" y="485.2" font-size="12" text-anchor="start" font-weight="normal" fill="#2F5D8A">22,5</text>
+<line x1="60.0" y1="560.0" x2="38.0" y2="560.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="60.0" y1="542.5" x2="38.0" y2="542.5" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="44.0" y1="560.0" x2="44.0" y2="542.5" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="38.0" y="555.2" font-size="12" text-anchor="end" font-weight="normal" fill="#2F5D8A">2,5</text>
+<text x="357.5" y="394.5" font-size="11" text-anchor="middle" font-weight="normal" fill="#6B6E70">Wand</text>
+<text x="357.5" y="612.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#2F5D8A">gestrichelt: verdeckte Träger Ø 12 × 150 · Kreise: Haken (Option) in den Fugen</text>
+<polygon points="910.0,230.0 903.5,230.4 897.1,231.7 890.9,233.8 885.0,236.7 879.6,240.3 874.6,244.6 870.3,249.6 866.7,255.0 863.8,260.9 861.7,267.1 860.4,273.5 860.0,280.0 860.4,286.5 861.7,292.9 863.8,299.1 866.7,305.0 870.3,310.4 874.6,315.4 879.6,319.7 885.0,323.3 890.9,326.2 897.1,328.3 903.5,329.6 910.0,330.0 910.0,316.4 905.2,316.1 900.6,315.2 896.1,313.6 891.8,311.5 887.8,308.9 884.3,305.7 881.1,302.2 878.5,298.2 876.4,293.9 874.8,289.4 873.9,284.8 873.6,280.0 873.9,275.2 874.8,270.6 876.4,266.1 878.5,261.8 881.1,257.8 884.3,254.3 887.8,251.1 891.8,248.5 896.1,246.4 900.6,244.8 905.2,243.9 910.0,243.6" fill="#E9E6DF" stroke="#14161A" stroke-width="1"/>
+<polygon points="910.0,243.6 905.2,243.9 900.6,244.8 896.1,246.4 891.8,248.5 887.8,251.1 884.3,254.3 881.1,257.8 878.5,261.8 876.4,266.1 874.8,270.6 873.9,275.2 873.6,280.0 873.9,284.8 874.8,289.4 876.4,293.9 878.5,298.2 881.1,302.2 884.3,305.7 887.8,308.9 891.8,311.5 896.1,313.6 900.6,315.2 905.2,316.1 910.0,316.4 1310.0,316.4 1310.0,243.6" fill="#C9C1A8" stroke="#14161A" stroke-width="0.6"/>
+<rect x="910.0" y="230.0" width="400.0" height="13.6" fill="#E9E6DF" stroke="#14161A" stroke-width="1"/>
+<rect x="910.0" y="316.4" width="400.0" height="13.6" fill="#E9E6DF" stroke="#14161A" stroke-width="1"/>
+<rect x="1310.0" y="190.0" width="30.0" height="180.0" fill="#C9C1A8" stroke="#14161A" stroke-width="1"/>
+<rect x="1010.0" y="268.0" width="300.0" height="24.0" fill="none" stroke="#2F5D8A" stroke-width="1.4" stroke-dasharray="5 3"/>
+<line x1="910.0" y1="280.0" x2="860.0" y2="280.0" stroke="#14161A" stroke-width="0.9"/>
+<text x="860.0" y="156.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Schnitt A–A (Maßstab größer)</text>
+<line x1="860.0" y1="330.0" x2="860.0" y2="376.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="1310.0" y1="330.0" x2="1310.0" y2="376.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="860.0" y1="370.0" x2="1310.0" y2="370.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="1085.0" y="365.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">22,5</text>
+<line x1="860.0" y1="330.0" x2="834.0" y2="330.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="860.0" y1="230.0" x2="834.0" y2="230.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="840.0" y1="330.0" x2="840.0" y2="230.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="834.0" y="284.0" font-size="12" text-anchor="end" font-weight="normal" fill="#2F5D8A">5</text>
+<line x1="1010.0" y1="230.0" x2="1010.0" y2="210.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="1310.0" y1="230.0" x2="1310.0" y2="210.0" stroke="#2F5D8A" stroke-width="0.7"/>
+<line x1="1010.0" y1="216.0" x2="1310.0" y2="216.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
+<text x="1160.0" y="211.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#2F5D8A">Träger 15</text>
+<text x="1100.0" y="256.0" font-size="11" text-anchor="middle" font-weight="normal" fill="#6B6E70">Kern Multiplex 3 × 12 mm</text>
+<text x="1346.0" y="210.0" font-size="11" text-anchor="start" font-weight="normal" fill="#6B6E70">Wand</text>
+<text x="860.0" y="530.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Stückliste je Länge (aus CAD, 85 geprüft)</text>
+<text x="860.0" y="560.0" font-size="12.5" text-anchor="start" font-weight="bold" fill="#14161A">Länge</text>
+<text x="1120.0" y="560.0" font-size="12.5" text-anchor="end" font-weight="bold" fill="#14161A">231 · 65</text>
+<text x="1190.0" y="560.0" font-size="12.5" text-anchor="end" font-weight="bold" fill="#14161A">232 · 85</text>
+<text x="1260.0" y="560.0" font-size="12.5" text-anchor="end" font-weight="bold" fill="#14161A">233 · 105</text>
+<text x="860.0" y="582.0" font-size="12.5" text-anchor="start" font-weight="normal" fill="#14161A">Fliesen je Fläche</text>
+<text x="1120.0" y="582.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">6</text>
+<text x="1190.0" y="582.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">8</text>
+<text x="1260.0" y="582.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">10</text>
+<text x="860.0" y="604.0" font-size="12.5" text-anchor="start" font-weight="normal" fill="#14161A">Fliesen 10 × 10 gesamt</text>
+<text x="1120.0" y="604.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">24</text>
+<text x="1190.0" y="604.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">32</text>
+<text x="1260.0" y="604.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">40</text>
+<text x="860.0" y="626.0" font-size="12.5" text-anchor="start" font-weight="normal" fill="#14161A">Viertelstab 2,5 × 10</text>
+<text x="1120.0" y="626.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">20</text>
+<text x="1190.0" y="626.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">24</text>
+<text x="1260.0" y="626.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">28</text>
+<text x="860.0" y="648.0" font-size="12.5" text-anchor="start" font-weight="normal" fill="#14161A">Eckkalotten</text>
+<text x="1120.0" y="648.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">4</text>
+<text x="1190.0" y="648.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">4</text>
+<text x="1260.0" y="648.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">4</text>
+<text x="860.0" y="670.0" font-size="12.5" text-anchor="start" font-weight="normal" fill="#14161A">Verdeckte Träger</text>
+<text x="1120.0" y="670.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">2</text>
+<text x="1190.0" y="670.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">2</text>
+<text x="1260.0" y="670.0" font-size="12.5" text-anchor="end" font-weight="normal" fill="#14161A">2</text>
+<rect x="908" y="788" width="580" height="140" fill="#FFFFFF" stroke="#14161A" stroke-width="1.2"/>
+<line x1="908" y1="830" x2="1488" y2="830" stroke="#14161A" stroke-width="0.8"/>
+<text x="920" y="816" font-size="20" font-weight="bold" fill="#14161A">FMK Furniture · Tondo 231–233 · Wandregal 65 / 85 / 105</text>
+<text x="920" y="852" font-size="12.5" fill="#14161A">Entwurf (Serie Tondo) · Fliese 10 × 10, Front Halbrund aus Viertelstab 2,5 × 10</text>
+<text x="920" y="872" font-size="12.5" fill="#6B6E70">Maße in cm, Fertigmaße inkl. Fliese · Fliesenraster 10 cm (98,5 mm + ca. 1,5 mm Fuge)</text>
+<text x="920" y="892" font-size="12.5" fill="#6B6E70">Vorne und Enden Viertelstab (Halbrund), zur Wand eckig · Zeichnung nicht maßstäblich ausdrucken</text>
+<text x="920" y="912" font-size="12.5" fill="#6B6E70">Stand: 12.11.2026 · erstellt von Claude · prüfen: Florian</text>
+<text x="28" y="804" font-size="14" font-weight="bold" fill="#14161A">Hinweise / offene Punkte</text>
+<text x="28" y="826" font-size="12.5" fill="#14161A">– Halterung: fertiger verdeckter Regalträger (2 Stahlstäbe Ø 12 × 150 + Wandplatte), Montage-Set; nur massive Wände, Trockenbau gesondert.</text>
+<text x="28" y="844" font-size="12.5" fill="#14161A">– Tragkraft angeben (Ziel 10–15 kg), Durchbiegung bei 105 cm prüfen (ggf. 3 Träger).</text>
+<text x="28" y="862" font-size="12.5" fill="#14161A">– Haken (Option): 3 Stück schwarz, in den Fugen (erste Fuge außen links/rechts + Mitte), 7,5 cm von der Vorderkante.</text>
+<text x="28" y="880" font-size="12.5" fill="#14161A">– Viertelstäbe nie zuschneiden: Länge immer 10 cm im Raster; vordere Ecken Eckkalotten.</text>
+<text x="28" y="898" font-size="12.5" fill="#14161A">– Unterseite gefliest (sichtbar beim Sitzen/Stehen darunter); Verpackung mit Kantenschutz für Paketversand.</text>
+</svg>
