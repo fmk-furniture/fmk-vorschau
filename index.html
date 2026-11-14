@@ -1599,7 +1599,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
      photos: echte Fotos des Prototyps (Ordner bilder/; optional pos = Bildausschnitt auf der Karte), proto: in welcher Ausführung er gebaut wurde.
      Fotos von Nov. 2026 sind nur Testbilder. Preise sind Annahmen bis zur Kalkulation (Fahrplan KW 46–47). */
   var PRODUCTS = [
-    { id: "p13", twin: "p23", focus: true, studio: "bilder/studio/bar.jpg", raum: "bilder/raum/bar.jpg", name: "Taglio 121", series: "Taglio", no: "121", slug: "taglio-121", oldSlug: "bar", kind: "Kaffeebar", form: "bar", base: 3490, show: uniItem("bar","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
+    { id: "p13", focus: true, studio: "bilder/studio/bar.jpg", raum: "bilder/raum/bar.jpg", name: "Taglio 121", series: "Taglio", no: "121", slug: "taglio-121", oldSlug: "bar", kind: "Kaffeebar", form: "bar", base: 3490, show: uniItem("bar","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
       /* Rückseite immer gefliest (wie Prototyp); breite Schublade als Option (Florian 12.11.2026), Preise Annahmen */
       options: [{ id: "schublade", label: "Breite Schublade, 70 cm (Push-to-Open)", short: "Schublade", price: 450 }],
       proto: "Salvia matt, helle Fuge",
@@ -1651,7 +1651,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     { id: "p17", twin: "p7", focus: true, studio: "bilder/studio/tondo201.jpg", raum: "bilder/raum/tondo201.jpg", coll: "rund", name: "Tondo 201 / 202", series: "Tondo", no: "201", slug: "tondo-201", oldSlug: "rund-kubus", kind: "Kubus", form: "rundKubus", base: 790, sizes: [{ no: "201", label: "35 cm", form: "rundKubus", base: 790 }, { no: "202", label: "45 cm", form: "rundKubus45", base: 1190 }],
       options: [{ id: "filz", label: "Sitzauflage Wollfilz 5 mm, rutschfest", short: "Filzauflage", price: 49 }], show: uniItem("rundKubus","vanadio"), chips: ["vanadio","salvia","kontrast","salbei","vermiglio"] },
     /* Partnerstücke Tondo (Florian 14.11.2026, „Ein Möbel, zwei Kanten“), Entwürfe, Preise Annahmen */
-    { id: "p23", twin: "p13", focus: true, coll: "rund", name: "Tondo 221", series: "Tondo", no: "221", slug: "tondo-221", kind: "Kaffeebar", form: "rundBar", base: 3890, show: uniItem("rundBar","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
+    { id: "p23", hidden: true, coll: "rund", name: "Tondo 221", series: "Tondo", no: "221", slug: "tondo-221", kind: "Kaffeebar", form: "rundBar", base: 3890, show: uniItem("rundBar","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
     { id: "p24", twin: "p15", focus: true, coll: "rund", name: "Tondo 241 / 242", series: "Tondo", no: "241", slug: "tondo-241", kind: "Pflanzkübel", form: "rundKuebel", base: 1190, show: uniItem("rundKuebel","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
       sizes: [{ no: "241", label: "55 cm", form: "rundKuebel", base: 1190 }, { no: "242", label: "45 cm", form: "rundKuebel45", base: 850 }],
       options: [{ id: "einsatz", label: "Herausnehmbarer Pflanzeinsatz", short: "Einsatz", price: 90 }, { id: "ablauf", label: "Wasserablauf mit Füßen, für draußen", short: "Ablauf", price: 90 }] },
@@ -2155,7 +2155,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
 
   /* Oberfläche */
   var $ = function (id) { return document.getElementById(id); };
-  var queueEdge = function () {}, fitView = function () {}, stageEl = $("stage"), viewR, viewS, controls, userMoved = false, introAnim = null, viewGroup = null, state = null, activeProduct = null, needs = true, queueRender = null;
+  var queueEdge = function () {}, fitView = function () {}, stageEl = $("stage"), viewR, viewS, controls, userMoved = false, introAnim = null, viewWall = null, frameOpt = null, viewGroup = null, state = null, activeProduct = null, needs = true, queueRender = null;
   var cards = {}, thumbs = {};
 
   function tileChipHtml(tile) { return ('<i style="background:' + hex(tile) + '"></i>').repeat(4); }
@@ -2223,6 +2223,11 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     t.innerHTML = '<img alt="">';
     t.addEventListener("click", function () { selectProduct(p, p.show, false); });
     $("v-thumbs").appendChild(t); thumbs[p.id] = t;
+    /* Konfigurator-Leiste (Florian 14.11.2026): Bar, Kubus, Couchtisch, Wandregal, Kübel; Werkstatt-Stücke vorerst nicht;
+       je Möbel ein Bild – die Tondo-Partner erreicht man über den Kanten-Schalter */
+    var ORDER = { p13: 1, p7: 2, p19: 3, p21: 4, p15: 5 };
+    t.style.order = ORDER[p.id] || 50;
+    t.hidden = !p.focus || (collOf(p) === "rund" && !!p.twin);
 
     var tr = document.createElement("tr");
     var optsSmall = p.options ? '<br><small style="color:var(--muted)">Optionen: ' + p.options.map(function (o) { return o.short + " + " + eur(o.price); }).join(", ") + "</small>" : "";
@@ -2393,14 +2398,26 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     viewGroup = buildGroup(bs, 13);
     if (viewGroup.userData.drawer) { drawerBaseZ = viewGroup.userData.drawer.dg.position.z; placeDrawer(); }
     viewS.scene.add(viewGroup);
+    /* Wandregal (14.11.2026): hängt in 115 cm Höhe an einer Wand, Kamera leicht von unten, damit man die Haken sieht */
+    var wallP = /^regal/.test(state.form);
+    if (wallP) { viewGroup.position.y = 115; viewGroup.updateMatrixWorld(true); }
+    if (!viewWall) {
+      viewWall = new THREE.Mesh(new THREE.PlaneGeometry(700, 500), new THREE.MeshStandardMaterial({ color: new THREE.Color(0xF3F0EA).convertSRGBToLinear(), emissive: new THREE.Color(0x4a4744), roughness: 0.95 }));
+      viewWall.receiveShadow = true; viewS.scene.add(viewWall);
+    }
+    viewWall.visible = wallP;
+    if (wallP) { var wbb = new THREE.Box3().setFromObject(viewGroup); viewWall.position.set(0, 120, wbb.min.z - 0.05); }
+    frameOpt = wallP ? { dir: new THREE.Vector3(0.42, -0.16, 1), k: 1.0 } : null;
+    controls.minPolarAngle = wallP ? PI * 0.3 : 0; controls.maxPolarAngle = wallP ? PI * 0.64 : PI * 0.47;
+    controls.minAzimuthAngle = wallP ? -1.1 : -Infinity; controls.maxAzimuthAngle = wallP ? 1.1 : Infinity;
     var size = stageEl.getBoundingClientRect();
     var saved = reframe ? null : { p: viewS.camera.position.clone(), t: controls.target.clone() };
     if (reframe) userMoved = false;
-    var fr = viewS.frame(viewGroup, size.width > 1 && size.height > 1 ? size.width / size.height : 4 / 3);
+    var fr = viewS.frame(viewGroup, size.width > 1 && size.height > 1 ? size.width / size.height : 4 / 3, frameOpt);
     if (saved) { viewS.camera.position.copy(saved.p); controls.target.copy(saved.t); }
     else {
       controls.target.copy(fr.c); controls.minDistance = fr.dist * 0.35; controls.maxDistance = fr.dist * 2;
-      introAnim = REDUCE ? null : { a: -0.55, base: viewS.camera.position.clone().sub(fr.c), t0: 0 };   /* startet, sobald die Seite sichtbar ist */
+      introAnim = REDUCE ? null : { a: frameOpt ? -0.3 : -0.55, base: viewS.camera.position.clone().sub(fr.c), t0: 0 };   /* startet, sobald die Seite sichtbar ist */
     }
     controls.update(); needs = true;
   }
@@ -2445,7 +2462,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
   }
   function selectProduct(p, s, scroll, view) {
     activeProduct = p; state = JSON.parse(JSON.stringify(s)); drawerPos = 0; drawerTarget = 0; drawerKeep = false;
-    Object.keys(thumbs).forEach(function (id) { thumbs[id].setAttribute("aria-pressed", id === p.id ? "true" : "false"); });
+    Object.keys(thumbs).forEach(function (id) { thumbs[id].setAttribute("aria-pressed", id === p.id || id === p.twin ? "true" : "false"); });
     photoIdx = 0;
     $("v-edge").textContent = collOf(p) === "rund" && F[p.form].parts()[0].t === "rbox" ? "Alle Kanten mit Viertelstab, Fugen laufen über die Kante weiter." : "Alle Außenkanten auf Gehrung geschnitten.";
     var pr = $("v-proto"); pr.hidden = !p.proto; pr.textContent = p.proto ? "Prototyp gebaut in " + p.proto + ". Andere Farben siehst du im 3D-Modell." : "";
@@ -2878,7 +2895,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       viewR.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       viewR.setSize(s.width, s.height, false);
       if (viewGroup && !userMoved) {             /* Bildausschnitt neu berechnen, solange niemand gedreht hat */
-        var fr = viewS.frame(viewGroup, s.width / s.height);
+        var fr = viewS.frame(viewGroup, s.width / s.height, frameOpt);
         controls.target.copy(fr.c); controls.minDistance = fr.dist * 0.35; controls.maxDistance = fr.dist * 2;
         if (introAnim) introAnim.base = viewS.camera.position.clone().sub(fr.c);
       } else { viewS.camera.aspect = s.width / s.height; viewS.camera.updateProjectionMatrix(); }
