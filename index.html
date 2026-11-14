@@ -116,7 +116,7 @@ h3.sub-head { font: 700 22px/1.2 var(--display); margin: 0; }
 .tc[aria-pressed="true"] { outline: 2px solid var(--ink); }
 
 .conf { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 28px; align-items: start; }
-.stage { position: sticky; top: 68px; aspect-ratio: 4 / 3; max-width: 100%; background: var(--plate); }
+.stage { position: sticky; top: 68px; aspect-ratio: 4 / 3; max-width: 100%; background: var(--plate); background: radial-gradient(120% 95% at 46% 34%, #FFFFFF 0%, #F6F5F1 42%, #ECE9E2 78%, #E3DFD6 100%); }
 .stage canvas { display: block; width: 100%; height: 100%; cursor: grab; }
 .stage canvas:active { cursor: grabbing; }
 .hint { position: absolute; left: 0; bottom: 6px; font: 400 13px/1 var(--mono); color: var(--muted); pointer-events: none; }
@@ -757,8 +757,8 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       </div>
       <div class="miter">
         <div class="miter-text">
-          <p>Bei vielen Fliesenmöbeln enden die Fliesen vor der Ecke, die Außenecke wird mit Fugmaterial verfugt. Das Ergebnis: eine breite Fugenkante, an jeder Ecke etwas anders.</p>
-          <p>Wir schneiden jede Außenkante auf Gehrung. Die Fuge ist an der Ecke so breit wie auf der Fläche: ein umlaufend gleichbleibendes Fugenbild.</p>
+          <p>Eine Fliesenecke lässt sich auf zwei Arten bauen: stumpf gestoßen, dann schließt das Fugmaterial die Kante, oder auf Gehrung. Wir schneiden jede Außenkante auf Gehrung. So ist die Fuge an der Ecke genauso breit wie auf der Fläche: ein umlaufend gleichbleibendes Fugenbild.</p>
+          <p>Darunter steckt, was sich bei uns seit Jahrzehnten auf der Baustelle bewährt: glasiertes Feinsteinzeug aus Italien, echter Fliesenkleber und Fugmaterial aus dem Profibereich. Verlegt wie ein Bad, das lange halten soll.</p>
           <p class="kind">Fliesen Verlege GmbH, Konstanz, seit 1977. Jedes Stück von Hand verlegt und verfugt.</p>
           <figure class="lz-fig lz-dark"><svg class="lz" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img"><title>Querschnitt: stumpf gestoßen gegen Gehrung</title>
 <g class="draw" fill="none" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
@@ -782,11 +782,11 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
           <div class="cmp" id="cmp" style="--p:50%">
             <img src="bilder/vergleich/gehrung.jpg" loading="eager" alt="Fliesenecke auf Gehrung: die Fuge läuft genauso schmal über die Kante wie auf der Fläche" width="1600" height="1200">
             <div class="cmp-top"><img src="bilder/vergleich/stumpf.jpg" loading="eager" alt="Stumpf gestoßene Fliesenecke: ein breiter Fugenstreifen füllt die Ecke" width="1600" height="1200"></div>
-            <span class="cmp-lab cmp-l">So bauen viele</span><span class="cmp-lab cmp-r">Auf Gehrung</span>
+            <span class="cmp-lab cmp-l">Stumpf gestoßen</span><span class="cmp-lab cmp-r">Auf Gehrung</span>
             <div class="cmp-bar" aria-hidden="true"><i></i></div>
             <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Vergleich verschieben: links stumpf gestoßen, rechts auf Gehrung">
           </div>
-          <p class="cmp-hint">Zieh den Regler: links stumpf gestoßen, rechts auf Gehrung.</p>
+          <p class="cmp-hint">Zieh den Regler und vergleiche beide Ecken.</p>
         </div>
       </div>
     </div>
@@ -1687,8 +1687,9 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     bx.fillStyle = "#000"; bx.fillRect(0, 0, W, H);
     rx.fillStyle = "#e4e4e4"; rx.fillRect(0, 0, W, H);
     var nx = forceCols || Math.max(1, Math.round(wCm / tile.w)), ny = Math.max(1, Math.round(hCm / tile.h));
-    var tw = W / nx, th = H / ny, g = (tile.gap || GAP) * s, e = Math.max(1, 0.14 * s);
+    var tw = W / nx, th = H / ny, g = (tile.gap || GAP) * s, e = Math.max(1.5, 0.3 * s);   /* Kantenrundung der Fliese ca. 3 mm (vorher 1,4 mm) */
     var rough = s0.finish === "matt" ? "#a6a6a6" : "#2c2c2c";
+    bx.fillStyle = "#1a1a1a"; bx.fillRect(0, 0, W, H);   /* Fuge etwas tiefer als die Fliese */
     for (var row = 0; row < ny; row++) for (var col = 0; col < nx; col++) {
       var info = colorAt(col, row, nx, ny);
       var x = col * tw + g / 2, y = H - (row + 1) * th + g / 2, w = tw - g, h = th - g;
@@ -1697,15 +1698,16 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       var gr = cx.createLinearGradient(x, y, x + w, y + h), v = hashRnd(col, row, ny, nx, 5) * 0.07;
       gr.addColorStop(0, "rgba(255,255,255," + v + ")"); gr.addColorStop(1, "rgba(0,0,0," + (0.07 - v) + ")");
       cx.fillStyle = gr; cx.fillRect(x, y, w, h);
-      bx.fillStyle = "#9a9a9a"; bx.fillRect(x, y, w, h);
+      bx.fillStyle = "#7a7a7a"; bx.fillRect(x, y, w, h);                                   /* gerundete Kante in drei Stufen */
+      bx.fillStyle = "#c4c4c4"; bx.fillRect(x + e * 0.4, y + e * 0.4, w - e * 0.8, h - e * 0.8);
       bx.fillStyle = "#ffffff"; bx.fillRect(x + e, y + e, w - 2 * e, h - 2 * e);
-      rx.fillStyle = rough; rx.fillRect(x, y, w, h);
+      rx.fillStyle = shade(rough, (hashRnd(col, row, nx, 3, 41) - 0.5) * 0.06); rx.fillRect(x, y, w, h);   /* Glasur je Fliese minimal unterschiedlich */
     }
     function tx(cv, srgb) { var t = new THREE.CanvasTexture(cv); if (srgb) t.encoding = THREE.sRGBEncoding; t.anisotropy = 8; return t; }
     return { map: tx(a[0], true), bumpMap: tx(b[0]), roughnessMap: tx(r[0]) };
   }
   function material(maps, doubleSide) {
-    return new THREE.MeshStandardMaterial({ map: maps.map, bumpMap: maps.bumpMap, bumpScale: 0.12, roughnessMap: maps.roughnessMap, roughness: 1, metalness: 0, envMapIntensity: 1, side: doubleSide ? THREE.DoubleSide : THREE.FrontSide });
+    return new THREE.MeshStandardMaterial({ map: maps.map, bumpMap: maps.bumpMap, bumpScale: 0.2, roughnessMap: maps.roughnessMap, roughness: 1, metalness: 0, envMapIntensity: 1.15, side: doubleSide ? THREE.DoubleSide : THREE.FrontSide });
   }
   function addMesh(g, geo, mat) { var m = new THREE.Mesh(geo, mat); m.castShadow = true; m.receiveShadow = true; g.add(m); return m; }
   function colorFn(s, pi, role, face, extra) {
@@ -1998,43 +2000,68 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       });
     });
   }
+  /* Studio-Lichtumgebung (14.11.2026, Konfigurator veredelt): warmer, gedämpfter Raum mit großer Softbox oben,
+     zwei Lichtstreifen seitlich (Glanzkanten auf der Glasur) und warmer Bodenreflexion – wie in den Blender-Studiobildern. */
   function envFor(renderer) {
     var pm = new THREE.PMREMGenerator(renderer), s = new THREE.Scene();
-    s.add(new THREE.Mesh(new THREE.BoxGeometry(100, 100, 100), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.36, 0.355, 0.345), side: THREE.BackSide })));
-    function panel(x, y, z, w, h, v) {
-      var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(v, v, v * 0.98), side: THREE.DoubleSide }));
+    s.add(new THREE.Mesh(new THREE.SphereGeometry(100, 32, 16), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.30, 0.29, 0.275), side: THREE.BackSide })));
+    function panel(x, y, z, w, h, r, g, b) {
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(r, g, b), side: THREE.DoubleSide }));
       m.position.set(x, y, z); m.lookAt(0, 0, 0); s.add(m);
     }
-    panel(-20, 46, 20, 24, 18, 4); panel(46, 12, 30, 8, 60, 3); panel(-46, 8, 30, 6, 50, 2);
-    var t = pm.fromScene(s, 0.02).texture; pm.dispose(); return t;
+    panel(-12, 60, 18, 46, 30, 3.2, 3.15, 3.0);     /* große Softbox oben */
+    panel(-58, 14, 22, 9, 70, 2.6, 2.55, 2.45);     /* Lichtstreifen links */
+    panel(56, 18, -6, 7, 60, 1.7, 1.72, 1.8);       /* Lichtstreifen rechts, etwas kühler */
+    panel(10, 6, 62, 70, 26, 0.95, 0.93, 0.9);      /* Aufheller von vorn */
+    panel(0, -48, 0, 120, 120, 0.52, 0.46, 0.38);   /* warme Bodenreflexion */
+    var t = pm.fromScene(s, 0.03).texture; pm.dispose(); return t;
   }
-  function Stage(renderer) {
+  /* Kontaktschatten: weicher, dunkler Fleck direkt unter dem Stück (ersetzt keine Schlagschatten, verankert das Stück am Boden) */
+  var CONTACT_TEX = null;
+  function contactTex() {
+    if (CONTACT_TEX) return CONTACT_TEX;
+    var c = mkCanvas(256, 256), x = c[1], img = x.createImageData(256, 256), d = img.data, px, py;
+    for (py = 0; py < 256; py++) for (px = 0; px < 256; px++) {   /* Abstand zum inneren Rechteck → weicher Verlauf, in jedem Browser gleich */
+      var dx = Math.max(Math.abs(px - 127.5) - 62, 0), dy = Math.max(Math.abs(py - 127.5) - 62, 0);
+      var t = Math.min(1, Math.hypot(dx, dy) / 62), a = (1 - t) * (1 - t) * (1 - t * 0.5);
+      var o = (py * 256 + px) * 4; d[o] = d[o + 1] = d[o + 2] = 0; d[o + 3] = Math.round(a * 150);
+    }
+    x.putImageData(img, 0, 0);
+    CONTACT_TEX = new THREE.CanvasTexture(c[0]); return CONTACT_TEX;
+  }
+  function Stage(renderer, opt) {
+    opt = opt || {};
     renderer.outputEncoding = THREE.sRGBEncoding;
-    renderer.toneMapping = THREE.NoToneMapping;
+    renderer.toneMapping = THREE.NoToneMapping;      /* bewusst ohne Tonwertkurve: Fliesenfarben bleiben farbtreu */
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.setClearColor(PLATE, 1);
+    renderer.shadowMap.type = THREE.PCFShadowMap;    /* PCF (nicht PCFSoft), damit shadow.radius weich zeichnet */
+    if (opt.transparent) renderer.setClearColor(0x000000, 0); else renderer.setClearColor(PLATE, 1);
     var scene = new THREE.Scene(); scene.environment = envFor(renderer);
-    var floor = new THREE.Mesh(new THREE.PlaneGeometry(6000, 6000), new THREE.ShadowMaterial({ opacity: 0.3 }));
+    var floor = new THREE.Mesh(new THREE.PlaneGeometry(6000, 6000), new THREE.ShadowMaterial({ opacity: 0.16 }));
     floor.rotation.x = -PI / 2; floor.receiveShadow = true; scene.add(floor);
+    var contact = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: contactTex(), transparent: true, depthWrite: false, opacity: 0.85 }));
+    contact.rotation.x = -PI / 2; contact.position.y = 0.06; contact.renderOrder = -1; scene.add(contact);
     function light(i, map, radius) {
-      var l = new THREE.DirectionalLight(0xffffff, i); l.castShadow = true;
-      l.shadow.mapSize.set(map, map); l.shadow.radius = radius; l.shadow.bias = -0.0006; l.shadow.normalBias = 0.25;
+      var l = new THREE.DirectionalLight(0xfffaf2, i); l.castShadow = true;
+      l.shadow.mapSize.set(map, map); l.shadow.radius = radius; l.shadow.bias = -0.0005; l.shadow.normalBias = 0.3;
       scene.add(l); scene.add(l.target); return l;
     }
-    var key = light(0.55, 2048, 5), top = light(0.1, 1024, 14);
+    var key = light(0.42, 2048, 7), top = light(0.12, 1024, 16);
     var camera = new THREE.PerspectiveCamera(20, 4 / 3, 5, 8000);
-    function frame(g, aspect, opt) {
-      opt = opt || {};
+    function frame(g, aspect, opt2) {
+      opt2 = opt2 || {};
       var bb = new THREE.Box3().setFromObject(g), c = bb.getCenter(new THREE.Vector3()), r = bb.getBoundingSphere(new THREE.Sphere()).radius;
-      [[key, new THREE.Vector3(-0.55, 1.15, 0.75)], [top, new THREE.Vector3(0.02, 1, 0.02)]].forEach(function (x) {
+      [[key, new THREE.Vector3(-0.45, 1.5, 0.7)], [top, new THREE.Vector3(0.02, 1, 0.02)]].forEach(function (x) {
         var l = x[0]; l.target.position.copy(c); l.position.copy(c).add(x[1].normalize().multiplyScalar(r * 4));
         var cam = l.shadow.camera, ex = r * 1.9; cam.left = -ex; cam.right = ex; cam.top = ex; cam.bottom = -ex; cam.near = 1; cam.far = r * 9; cam.updateProjectionMatrix();
         if (l.shadow.map) { l.shadow.map.dispose(); l.shadow.map = null; }
       });
+      var sx = bb.max.x - bb.min.x, sz = bb.max.z - bb.min.z;   /* Kontaktschatten auf die Grundfläche legen */
+      contact.visible = bb.min.y < 15;                            /* nicht beim hängenden Wandregal */
+      contact.scale.set(sx * 1.32 + 8, sz * 1.32 + 8, 1); contact.position.x = c.x; contact.position.z = c.z;
       camera.aspect = aspect;
-      var dist = r / Math.sin(camera.fov * PI / 360) * (aspect < 1 ? 1 / aspect : 1) * 1.06 * (opt.k || 1);
-      var dir = opt.dir || new THREE.Vector3(0.62, 0.5, 1);
+      var dist = r / Math.sin(camera.fov * PI / 360) * (aspect < 1 ? 1 / aspect : 1) * 1.16 * (opt2.k || 1);
+      var dir = opt2.dir || new THREE.Vector3(0.62, 0.44, 1);
       camera.position.copy(c).add(dir.clone().normalize().multiplyScalar(dist));
       camera.lookAt(c); camera.updateProjectionMatrix();
       return { c: c, r: r, dist: dist };
@@ -2044,7 +2071,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
 
   /* Oberfläche */
   var $ = function (id) { return document.getElementById(id); };
-  var queueEdge = function () {}, fitView = function () {}, stageEl = $("stage"), viewR, viewS, controls, viewGroup = null, state = null, activeProduct = null, needs = true, queueRender = null;
+  var queueEdge = function () {}, fitView = function () {}, stageEl = $("stage"), viewR, viewS, controls, userMoved = false, viewGroup = null, state = null, activeProduct = null, needs = true, queueRender = null;
   var cards = {}, thumbs = {};
 
   function tileChipHtml(tile) { return ('<i style="background:' + hex(tile) + '"></i>').repeat(4); }
@@ -2256,7 +2283,8 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     viewS.scene.add(viewGroup);
     var size = stageEl.getBoundingClientRect();
     var saved = reframe ? null : { p: viewS.camera.position.clone(), t: controls.target.clone() };
-    var fr = viewS.frame(viewGroup, size.width / size.height);
+    if (reframe) userMoved = false;
+    var fr = viewS.frame(viewGroup, size.width > 1 && size.height > 1 ? size.width / size.height : 4 / 3);
     if (saved) { viewS.camera.position.copy(saved.p); controls.target.copy(saved.t); }
     else { controls.target.copy(fr.c); controls.minDistance = fr.dist * 0.35; controls.maxDistance = fr.dist * 2; }
     controls.update(); needs = true;
@@ -2700,19 +2728,25 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
   function start() {
     if (!window.THREE || !THREE.OrbitControls) return showError();
     try {
-      viewR = new THREE.WebGLRenderer({ antialias: true });
+      viewR = new THREE.WebGLRenderer({ antialias: true, alpha: true });   /* durchsichtig: Studio-Verlauf kommt aus dem CSS der Bühne */
       var cardR = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     } catch (e) { return showError(); }
     stageEl.insertBefore(viewR.domElement, stageEl.firstChild);
-    viewS = Stage(viewR);
+    viewS = Stage(viewR, { transparent: true });
     controls = new THREE.OrbitControls(viewS.camera, viewR.domElement);
-    controls.enableDamping = true; controls.dampingFactor = 0.08; controls.enablePan = false; controls.maxPolarAngle = PI * 0.49;
+    controls.enableDamping = true; controls.dampingFactor = 0.08; controls.enablePan = false; controls.maxPolarAngle = PI * 0.47;
     controls.addEventListener("change", function () { needs = true; });
+    controls.addEventListener("start", function () { userMoved = true; });
     function fit() {
       var s = stageEl.getBoundingClientRect();
+      if (s.width < 2 || s.height < 2) return;   /* Seite noch verborgen: später neu einpassen */
       viewR.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      viewR.setSize(Math.max(1, s.width), Math.max(1, s.height), false);
-      viewS.camera.aspect = s.width / s.height; viewS.camera.updateProjectionMatrix(); needs = true;
+      viewR.setSize(s.width, s.height, false);
+      if (viewGroup && !userMoved) {             /* Bildausschnitt neu berechnen, solange niemand gedreht hat */
+        var fr = viewS.frame(viewGroup, s.width / s.height);
+        controls.target.copy(fr.c); controls.minDistance = fr.dist * 0.35; controls.maxDistance = fr.dist * 2;
+      } else { viewS.camera.aspect = s.width / s.height; viewS.camera.updateProjectionMatrix(); }
+      needs = true;
     }
     fit(); fitView = fit;
     if (window.ResizeObserver) new ResizeObserver(fit).observe(stageEl);
