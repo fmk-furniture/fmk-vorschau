@@ -648,23 +648,23 @@ h3 { line-height: 1.1; }
 /* ===== Vorher/Nachher-Regler Gehrung (G2, 13.11.2026) ===== */
 /* Ecken-Regler (14.11.2026): vier Makros, weich überblendet, Regler mit vier Rastpunkten */
 .ecken { display: grid; gap: 14px; }
-.ecken-pic { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r); background: #1E1A17; }
+.ecken-pic { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r); background: #ECE8E1; }
 .ecken-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .7s ease; }
 .ecken-pic img.on { opacity: 1; }
-.ecken-cap { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 40px 20px 16px; font-size: 15px; line-height: 1.4; color: #F2F1ED; background: linear-gradient(to top, rgba(18,15,13,.72), rgba(18,15,13,0)); }
+.ecken-cap { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 40px 20px 16px; font-size: 15px; line-height: 1.4; color: #111; background: linear-gradient(to top, rgba(240,237,231,.92), rgba(240,237,231,0)); }
 .ecken-track { position: relative; padding-top: 14px; }
-.ecken-line { position: absolute; top: 14px; left: 12.5%; right: 12.5%; height: 1px; background: rgba(242,241,237,.28); }
-.ecken-line i { position: absolute; top: 50%; left: calc(var(--k, 0) * 100% / 3); width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #F2F1ED; box-shadow: 0 0 0 5px rgba(242,241,237,.14); transition: left .45s cubic-bezier(.3,.7,.2,1); }
+.ecken-line { position: absolute; top: 14px; left: 12.5%; right: 12.5%; height: 1px; background: rgba(17,17,17,.18); }
+.ecken-line i { position: absolute; top: 50%; left: calc(var(--k, 0) * 100% / 3); width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #111; box-shadow: 0 0 0 5px rgba(17,17,17,.07); transition: left .45s cubic-bezier(.3,.7,.2,1); }
 .ecken-stops { list-style: none; margin: 0; padding: 22px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .ecken-stops li { text-align: center; position: relative; }
-.ecken-stops li::before { content: ""; position: absolute; top: -12px; left: 50%; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: rgba(242,241,237,.45); }
+.ecken-stops li::before { content: ""; position: absolute; top: -12px; left: 50%; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: rgba(17,17,17,.28); }
 .ecken-stops li.ours::before { background: var(--green); }
-.ecken-stops button { position: relative; z-index: 2; background: none; border: 0; padding: 4px 2px; font: 500 13px/1.25 var(--body); color: rgba(242,241,237,.6); cursor: pointer; }
+.ecken-stops button { position: relative; z-index: 2; background: none; border: 0; padding: 4px 2px; font: 500 13px/1.25 var(--body); color: rgba(17,17,17,.52); cursor: pointer; }
 .ecken-stops button small { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; opacity: .75; margin-top: 2px; }
-.ecken-stops button[aria-pressed="true"] { color: #F2F1ED; }
+.ecken-stops button[aria-pressed="true"] { color: #111; }
 .ecken-stops button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 4px; }
 .ecken-range { position: absolute; top: 0; left: 0; width: 100%; height: 30px; margin: 0; opacity: 0; cursor: ew-resize; z-index: 1; }
-.ecken .cmp-hint { display: flex; align-items: center; gap: 8px; margin: 2px 0 0; }
+.ecken .cmp-hint { display: flex; align-items: center; gap: 8px; margin: 2px 0 0; color: #6B6E70; }
 .ours-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex: none; }
 .miter-text h2 { margin: 0 0 4px; }
 @media (max-width: 560px) { .ecken-stops button { font-size: 12px; } .ecken-cap { font-size: 14px; padding: 32px 14px 12px; } }
@@ -773,7 +773,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     </div>
   </div>
 
-  <section class="sec gut band dark">
+  <section class="sec gut band">
     <div class="max" style="display:grid;gap:28px">
       <!-- Ecken-Abschnitt neu (14.11.2026, Florian): vier Arten einer Außenecke, Regler mit vier Rastpunkten; ohne Seitenhiebe -->
       <div class="miter" id="gehrung">
