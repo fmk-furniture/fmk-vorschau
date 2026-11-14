@@ -118,6 +118,8 @@ h3.sub-head { font: 700 22px/1.2 var(--display); margin: 0; }
 .conf { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 28px; align-items: start; }
 .stage { position: sticky; top: 68px; aspect-ratio: 4 / 3; max-width: 100%; background: var(--plate); background: radial-gradient(120% 95% at 46% 34%, #FFFFFF 0%, #F6F5F1 42%, #ECE9E2 78%, #E3DFD6 100%); }
 .stage canvas { display: block; width: 100%; height: 100%; cursor: grab; }
+.stage .xfade { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 1; transition: opacity .45s ease; }
+.stage .xfade.go { opacity: 0; }
 .stage canvas:active { cursor: grabbing; }
 .hint { position: absolute; left: 0; bottom: 6px; font: 400 13px/1 var(--mono); color: var(--muted); pointer-events: none; }
 .panel { display: grid; gap: 20px; min-width: 0; }
@@ -1679,6 +1681,19 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
   function mkCanvas(w, h) { var c = document.createElement("canvas"); c.width = w; c.height = h; return [c, c.getContext("2d")]; }
   var tmpC = new THREE.Color();
   function shade(hexStr, j) { tmpC.set(hexStr); var hsl = {}; tmpC.getHSL(hsl); tmpC.setHSL(hsl.h, hsl.s, Math.max(0, Math.min(1, hsl.l + j))); return "#" + tmpC.getHexString(); }
+  var GRAIN = null;
+  function grain() {   /* einmal erzeugtes Körnungsmuster (Farbe + Relief) für den Fugenmörtel */
+    if (GRAIN) return GRAIN;
+    var c = mkCanvas(128, 128), b = mkCanvas(128, 128), seed = 12345, i;
+    function lcg() { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }
+    b[1].fillStyle = "#1a1a1a"; b[1].fillRect(0, 0, 128, 128);
+    for (i = 0; i < 700; i++) {
+      var x = lcg() * 128, y = lcg() * 128, v = lcg();
+      c[1].fillStyle = v < 0.5 ? "rgba(0,0,0,0.10)" : "rgba(255,255,255,0.11)"; c[1].fillRect(x, y, 1, 1);
+      b[1].fillStyle = v < 0.5 ? "#0c0c0c" : "#2c2c2c"; b[1].fillRect(x, y, 1, 1);
+    }
+    GRAIN = [c[0], b[0]]; return GRAIN;
+  }
   function faceMaps(wCm, hCm, tile, colorAt, s0, density, forceCols) {
     var s = Math.min(density, 2048 / Math.max(wCm, hCm));
     var W = Math.max(8, Math.round(wCm * s)), H = Math.max(8, Math.round(hCm * s));
@@ -1688,8 +1703,11 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     rx.fillStyle = "#e4e4e4"; rx.fillRect(0, 0, W, H);
     var nx = forceCols || Math.max(1, Math.round(wCm / tile.w)), ny = Math.max(1, Math.round(hCm / tile.h));
     var tw = W / nx, th = H / ny, g = (tile.gap || GAP) * s, e = Math.max(1.5, 0.3 * s);   /* Kantenrundung der Fliese ca. 3 mm (vorher 1,4 mm) */
-    var rough = s0.finish === "matt" ? "#a6a6a6" : "#2c2c2c";
+    var rough = s0.finish === "matt" ? "#b2b2b2" : "#1c1c1c";   /* matt samtiger, glänzend spiegelnder (14.11.2026) */
     bx.fillStyle = "#1a1a1a"; bx.fillRect(0, 0, W, H);   /* Fuge etwas tiefer als die Fliese */
+    /* Körnung im Fugenmörtel: feine helle/dunkle Punkte in Farbe und Relief (wird von den Fliesen überdeckt) */
+    var gr0 = grain(); cx.fillStyle = cx.createPattern(gr0[0], "repeat"); cx.fillRect(0, 0, W, H);
+    bx.fillStyle = bx.createPattern(gr0[1], "repeat"); bx.fillRect(0, 0, W, H);
     for (var row = 0; row < ny; row++) for (var col = 0; col < nx; col++) {
       var info = colorAt(col, row, nx, ny);
       var x = col * tw + g / 2, y = H - (row + 1) * th + g / 2, w = tw - g, h = th - g;
@@ -1704,10 +1722,10 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       rx.fillStyle = shade(rough, (hashRnd(col, row, nx, 3, 41) - 0.5) * 0.06); rx.fillRect(x, y, w, h);   /* Glasur je Fliese minimal unterschiedlich */
     }
     function tx(cv, srgb) { var t = new THREE.CanvasTexture(cv); if (srgb) t.encoding = THREE.sRGBEncoding; t.anisotropy = 8; return t; }
-    return { map: tx(a[0], true), bumpMap: tx(b[0]), roughnessMap: tx(r[0]) };
+    return { map: tx(a[0], true), bumpMap: tx(b[0]), roughnessMap: tx(r[0]), finish: s0.finish };
   }
   function material(maps, doubleSide) {
-    return new THREE.MeshStandardMaterial({ map: maps.map, bumpMap: maps.bumpMap, bumpScale: 0.2, roughnessMap: maps.roughnessMap, roughness: 1, metalness: 0, envMapIntensity: 1.15, side: doubleSide ? THREE.DoubleSide : THREE.FrontSide });
+    return new THREE.MeshStandardMaterial({ map: maps.map, bumpMap: maps.bumpMap, bumpScale: 0.2, roughnessMap: maps.roughnessMap, roughness: 1, metalness: 0, envMapIntensity: maps.finish === "matt" ? 1.05 : 1.55, side: doubleSide ? THREE.DoubleSide : THREE.FrontSide });
   }
   function addMesh(g, geo, mat) { var m = new THREE.Mesh(geo, mat); m.castShadow = true; m.receiveShadow = true; g.add(m); return m; }
   function colorFn(s, pi, role, face, extra) {
@@ -2029,6 +2047,38 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     x.putImageData(img, 0, 0);
     CONTACT_TEX = new THREE.CanvasTexture(c[0]); return CONTACT_TEX;
   }
+  /* Heller Eichenboden (Raum andeuten, 14.11.2026): 4 × 4 m, Dielen 14 cm, läuft zum Rand weich aus (alphaMap) */
+  function woodFloor() {
+    var N = 2048, px = N / 400, a = mkCanvas(N, N), f = mkCanvas(N, N), x = a[1], seed = 777, i, j;
+    function rnd() { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }
+    x.fillStyle = "#DCCBB0"; x.fillRect(0, 0, N, N);
+    var pw = 14 * px;
+    for (var row = 0; row * pw < N; row++) {
+      var y0 = row * pw, xpos = -rnd() * 160 * px;
+      while (xpos < N) {
+        var len = (90 + rnd() * 130) * px, t = rnd();
+        x.fillStyle = "hsl(" + (33 + t * 5) + "," + (22 + t * 8) + "%," + (74 + (rnd() - 0.5) * 6) + "%)";   /* helle, ruhige Eiche */
+        x.fillRect(xpos, y0, len, pw);
+        for (j = 0; j < 26; j++) {                       /* Maserung: feine, leicht gewellte Linien */
+          var gy = y0 + rnd() * pw, al = 0.04 + rnd() * 0.07;
+          x.strokeStyle = rnd() < 0.7 ? "rgba(120,85,45," + al + ")" : "rgba(255,245,225," + al + ")";
+          x.lineWidth = 0.6 + rnd() * 1.4; x.beginPath(); x.moveTo(xpos, gy);
+          for (i = 1; i <= 8; i++) x.lineTo(xpos + len * i / 8, gy + Math.sin(i * 1.3 + j) * rnd() * 2.2);
+          x.stroke();
+        }
+        x.fillStyle = "rgba(90,65,40,0.35)"; x.fillRect(xpos, y0, 1.2, pw);   /* Stoßfuge */
+        xpos += len;
+      }
+      x.fillStyle = "rgba(90,65,40,0.28)"; x.fillRect(0, y0, N, 1.2);         /* Längsfuge */
+    }
+    var g = f[1].createRadialGradient(N / 2, N / 2, N * 0.12, N / 2, N / 2, N * 0.5);
+    g.addColorStop(0, "#fff"); g.addColorStop(0.55, "#9a9a9a"); g.addColorStop(1, "#000");
+    f[1].fillStyle = g; f[1].fillRect(0, 0, N, N);
+    var map = new THREE.CanvasTexture(a[0]); map.encoding = THREE.sRGBEncoding; map.anisotropy = 8;
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ map: map, alphaMap: new THREE.CanvasTexture(f[0]), transparent: true, depthWrite: false, roughness: 0.62, metalness: 0, envMapIntensity: 0.6 }));
+    m.rotation.x = -PI / 2; m.position.y = -0.05; m.receiveShadow = true; m.renderOrder = -2;
+    return m;
+  }
   function Stage(renderer, opt) {
     opt = opt || {};
     renderer.outputEncoding = THREE.sRGBEncoding;
@@ -2041,6 +2091,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     floor.rotation.x = -PI / 2; floor.receiveShadow = true; scene.add(floor);
     var contact = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: contactTex(), transparent: true, depthWrite: false, opacity: 0.85 }));
     contact.rotation.x = -PI / 2; contact.position.y = 0.06; contact.renderOrder = -1; scene.add(contact);
+    var wood = opt.floor ? woodFloor() : null; if (wood) scene.add(wood);
     function light(i, map, radius) {
       var l = new THREE.DirectionalLight(0xfffaf2, i); l.castShadow = true;
       l.shadow.mapSize.set(map, map); l.shadow.radius = radius; l.shadow.bias = -0.0005; l.shadow.normalBias = 0.3;
@@ -2059,9 +2110,10 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       var sx = bb.max.x - bb.min.x, sz = bb.max.z - bb.min.z;   /* Kontaktschatten auf die Grundfläche legen */
       contact.visible = bb.min.y < 15;                            /* nicht beim hängenden Wandregal */
       contact.scale.set(sx * 1.32 + 8, sz * 1.32 + 8, 1); contact.position.x = c.x; contact.position.z = c.z;
+      if (wood) { wood.visible = contact.visible; wood.position.x = c.x; wood.position.z = c.z; var ws = Math.max(1, r * 2.6 / 200); wood.scale.set(ws, ws, 1); }
       camera.aspect = aspect;
       var dist = r / Math.sin(camera.fov * PI / 360) * (aspect < 1 ? 1 / aspect : 1) * 1.16 * (opt2.k || 1);
-      var dir = opt2.dir || new THREE.Vector3(0.62, 0.44, 1);
+      var dir = opt2.dir || new THREE.Vector3(0.62, opt.floor ? 0.36 : 0.44, 1);   /* im Konfigurator etwas tiefer, wie aus Sitzhöhe */
       camera.position.copy(c).add(dir.clone().normalize().multiplyScalar(dist));
       camera.lookAt(c); camera.updateProjectionMatrix();
       return { c: c, r: r, dist: dist };
@@ -2071,7 +2123,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
 
   /* Oberfläche */
   var $ = function (id) { return document.getElementById(id); };
-  var queueEdge = function () {}, fitView = function () {}, stageEl = $("stage"), viewR, viewS, controls, userMoved = false, viewGroup = null, state = null, activeProduct = null, needs = true, queueRender = null;
+  var queueEdge = function () {}, fitView = function () {}, stageEl = $("stage"), viewR, viewS, controls, userMoved = false, introAnim = null, viewGroup = null, state = null, activeProduct = null, needs = true, queueRender = null;
   var cards = {}, thumbs = {};
 
   function tileChipHtml(tile) { return ('<i style="background:' + hex(tile) + '"></i>').repeat(4); }
@@ -2273,8 +2325,23 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     setFuge(state.grout);
   }
   var drawerPos = 0, drawerTarget = 0, drawerBaseZ = 0, DRAWER_OPEN = 25, drawerKeep = false;   /* drawerKeep: abgewählt, fährt noch zu */
+  var REDUCE = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  /* Weicher Farbwechsel (14.11.2026): altes Bild als Standbild über die Bühne legen und ausblenden */
+  function crossfade() {
+    if (REDUCE || !viewGroup || $("konf").hidden || !viewR.domElement.width) return;
+    try {
+      viewR.render(viewS.scene, viewS.camera);                       /* im selben Schritt auslesen, dann ist der Puffer noch gefüllt */
+      var url = viewR.domElement.toDataURL("image/png");
+      var old = stageEl.querySelector(".xfade"); if (old) old.remove();
+      var im = new Image(); im.className = "xfade"; im.alt = ""; im.src = url;
+      stageEl.insertBefore(im, viewR.domElement.nextSibling);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { im.classList.add("go"); }); });
+      setTimeout(function () { im.remove(); }, 700);
+    } catch (e) {}
+  }
   function rebuild(reframe) {
     if (!viewR) return;
+    if (!reframe) crossfade();
     if (viewGroup) { viewS.scene.remove(viewGroup); disposeGroup(viewGroup); }
     var keep = {}; if (drawerKeep) keep[drawerKeep === true ? "schublade" : drawerKeep] = true;
     var bs = drawerKeep ? Object.assign({}, state, { opts: Object.assign({}, state.opts, keep) }) : state;
@@ -2286,7 +2353,10 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     if (reframe) userMoved = false;
     var fr = viewS.frame(viewGroup, size.width > 1 && size.height > 1 ? size.width / size.height : 4 / 3);
     if (saved) { viewS.camera.position.copy(saved.p); controls.target.copy(saved.t); }
-    else { controls.target.copy(fr.c); controls.minDistance = fr.dist * 0.35; controls.maxDistance = fr.dist * 2; }
+    else {
+      controls.target.copy(fr.c); controls.minDistance = fr.dist * 0.35; controls.maxDistance = fr.dist * 2;
+      introAnim = REDUCE ? null : { a: -0.55, base: viewS.camera.position.clone().sub(fr.c), t0: 0 };   /* startet, sobald die Seite sichtbar ist */
+    }
     controls.update(); needs = true;
   }
   function placeDrawer() {
@@ -2732,11 +2802,11 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       var cardR = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     } catch (e) { return showError(); }
     stageEl.insertBefore(viewR.domElement, stageEl.firstChild);
-    viewS = Stage(viewR, { transparent: true });
+    viewS = Stage(viewR, { transparent: true, floor: true });
     controls = new THREE.OrbitControls(viewS.camera, viewR.domElement);
     controls.enableDamping = true; controls.dampingFactor = 0.08; controls.enablePan = false; controls.maxPolarAngle = PI * 0.47;
     controls.addEventListener("change", function () { needs = true; });
-    controls.addEventListener("start", function () { userMoved = true; });
+    controls.addEventListener("start", function () { userMoved = true; introAnim = null; });
     function fit() {
       var s = stageEl.getBoundingClientRect();
       if (s.width < 2 || s.height < 2) return;   /* Seite noch verborgen: später neu einpassen */
@@ -2745,6 +2815,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       if (viewGroup && !userMoved) {             /* Bildausschnitt neu berechnen, solange niemand gedreht hat */
         var fr = viewS.frame(viewGroup, s.width / s.height);
         controls.target.copy(fr.c); controls.minDistance = fr.dist * 0.35; controls.maxDistance = fr.dist * 2;
+        if (introAnim) introAnim.base = viewS.camera.position.clone().sub(fr.c);
       } else { viewS.camera.aspect = s.width / s.height; viewS.camera.updateProjectionMatrix(); }
       needs = true;
     }
@@ -2753,6 +2824,13 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     selectProduct(PRODUCTS[0], PRODUCTS[0].show, false);
     (function loop() {
       requestAnimationFrame(loop);
+      if (introAnim && !$("konf").hidden) {      /* Einstiegs-Kamerafahrt: ca. 30° um das Stück, sanft auslaufend */
+        if (!introAnim.t0) introAnim.t0 = performance.now();
+        var it = Math.min(1, (performance.now() - introAnim.t0) / 1900), e = 1 - Math.pow(1 - it, 3), ang = introAnim.a * (1 - e);
+        var off = introAnim.base.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), ang);
+        viewS.camera.position.copy(controls.target).add(off); viewS.camera.lookAt(controls.target); needs = true;
+        if (it >= 1) introAnim = null;
+      }
       controls.update();
       if (Math.abs(drawerPos - drawerTarget) > 0.05) { drawerPos += (drawerTarget - drawerPos) * 0.09; if (Math.abs(drawerPos - drawerTarget) <= 0.05) drawerPos = drawerTarget; placeDrawer(); needs = true; }
       else if (drawerKeep && drawerPos === 0) { drawerKeep = false; rebuild(false); }
