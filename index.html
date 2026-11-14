@@ -778,15 +778,15 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       <!-- Ecken-Abschnitt neu (14.11.2026, Florian): vier Arten einer Außenecke, Regler mit vier Rastpunkten; ohne Seitenhiebe -->
       <div class="miter" id="gehrung">
         <div class="miter-text">
-          <h2>Wie aus einem Stück.</h2>
-          <p>Ein Fliesenmöbel steht und fällt mit seinen Ecken. Eine Schiene setzt eine Linie, ein stumpfer Stoß eine breite Fuge.</p>
-          <p>Wir wollten keine Unterbrechung. Darum schneiden wir jede Außenkante auf 45° (Taglio) oder setzen einen Viertelstab im Raster der Fliese (Tondo). Die Fuge bleibt rundum gleich – der Körper bleibt ein Körper.</p>
+          <h2>Wie aus einem Guss.</h2>
+          <p>Eine Abschlussschiene unterbricht das durchlaufende Fugenbild optisch – genauso wie eine zu breite Fuge an der Kante.</p>
+          <p>Darum schneiden wir jede Außenkante auf 45° (Taglio) oder setzen einen Viertelstab im Raster der Fliese (Tondo). So läuft die Fuge ohne Unterbrechung um jede Ecke.</p>
           <p class="kind">Fliesen Verlege GmbH, Konstanz, seit 1977. Jedes Stück von Hand verlegt und verfugt.</p>
         </div>
         <div class="ecken" id="ecken" data-step="0">
           <div class="ecken-pic">
             <img src="bilder/ecken/stumpf.jpg" data-i="0" class="on" alt="Stumpf gestoßene Fliesenecke: die Fliesen enden vor der Kante, Fugmaterial schließt die Ecke" width="1600" height="1200">
-            <img src="bilder/ecken/schiene.jpg" data-i="1" alt="Fliesenecke mit Edelstahl-Kantenschiene: eine sichtbare Metalllinie läuft über die Kante" width="1600" height="1200" loading="lazy">
+            <img src="bilder/ecken/schiene.jpg" data-i="1" alt="Fliesenecke mit Abschlussschiene aus Edelstahl: eine sichtbare Metalllinie läuft über die Kante" width="1600" height="1200" loading="lazy">
             <img src="bilder/ecken/gehrung.jpg" data-i="2" alt="Fliesenecke auf Gehrung: beide Fliesen auf 45° geschnitten, die Fuge läuft ohne Bruch um die Ecke" width="1600" height="1200" loading="lazy">
             <img src="bilder/ecken/viertelstab.jpg" data-i="3" alt="Fliesenecke mit Viertelstab und Kugelecke: gerundete Kantenstücke im Raster der Fliese" width="1600" height="1200" loading="lazy">
             <p class="ecken-cap" id="ecken-cap" aria-live="polite">Die Fliesen enden vor der Kante, Fugmaterial schließt die Ecke.</p>
@@ -795,11 +795,11 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
             <div class="ecken-line" aria-hidden="true"><i id="ecken-knob"></i></div>
             <ol class="ecken-stops">
               <li><button type="button" data-i="0" aria-pressed="true">Stumpf gestoßen</button></li>
-              <li><button type="button" data-i="1" aria-pressed="false">Kantenschiene</button></li>
+              <li><button type="button" data-i="1" aria-pressed="false">Abschlussschiene</button></li>
               <li class="ours"><button type="button" data-i="2" aria-pressed="false">Auf Gehrung<small>Taglio</small></button></li>
               <li class="ours"><button type="button" data-i="3" aria-pressed="false">Viertelstab<small>Tondo</small></button></li>
             </ol>
-            <input class="ecken-range" id="ecken-range" type="range" min="0" max="3" step="1" value="0" aria-label="Eckvariante wählen: stumpf gestoßen, Kantenschiene, auf Gehrung, Viertelstab">
+            <input class="ecken-range" id="ecken-range" type="range" min="0" max="3" step="1" value="0" aria-label="Eckvariante wählen: stumpf gestoßen, Abschlussschiene, auf Gehrung, Viertelstab">
           </div>
           <p class="cmp-hint"><span class="ours-dot" aria-hidden="true"></span>So bauen wir: auf Gehrung oder mit Viertelstab.</p>
         </div>
@@ -2603,7 +2603,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     var e = $("ecken"); if (!e) return;
     var imgs = e.querySelectorAll(".ecken-pic img"), btns = e.querySelectorAll(".ecken-stops button"), r = $("ecken-range"), cap = $("ecken-cap"), touched = false;
     var CAPS = ["Die Fliesen enden vor der Kante, Fugmaterial schließt die Ecke.",
-                "Ein Metallprofil schützt die Kante und zieht eine sichtbare Linie.",
+                "Eine Abschlussschiene aus Metall schützt die Kante und zieht eine sichtbare Linie.",
                 "Beide Fliesen auf 45° geschnitten. Die Fuge läuft ohne Bruch um die Ecke.",
                 "Gerundete Kantenstücke im Raster der Fliese, an der Ecke eine Kugelecke."];
     function set(i) {
