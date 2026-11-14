@@ -646,6 +646,28 @@ h3 { line-height: 1.1; }
 .gebaut b, .moeglich b, .trust b { font-family: var(--body); }
 
 /* ===== Vorher/Nachher-Regler Gehrung (G2, 13.11.2026) ===== */
+/* Ecken-Regler (14.11.2026): vier Makros, weich überblendet, Regler mit vier Rastpunkten */
+.ecken { display: grid; gap: 14px; }
+.ecken-pic { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r); background: #1E1A17; }
+.ecken-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .7s ease; }
+.ecken-pic img.on { opacity: 1; }
+.ecken-cap { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 40px 20px 16px; font-size: 15px; line-height: 1.4; color: #F2F1ED; background: linear-gradient(to top, rgba(18,15,13,.72), rgba(18,15,13,0)); }
+.ecken-track { position: relative; padding-top: 14px; }
+.ecken-line { position: absolute; top: 14px; left: 12.5%; right: 12.5%; height: 1px; background: rgba(242,241,237,.28); }
+.ecken-line i { position: absolute; top: 50%; left: calc(var(--k, 0) * 100% / 3); width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #F2F1ED; box-shadow: 0 0 0 5px rgba(242,241,237,.14); transition: left .45s cubic-bezier(.3,.7,.2,1); }
+.ecken-stops { list-style: none; margin: 0; padding: 22px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ecken-stops li { text-align: center; position: relative; }
+.ecken-stops li::before { content: ""; position: absolute; top: -12px; left: 50%; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: rgba(242,241,237,.45); }
+.ecken-stops li.ours::before { background: var(--green); }
+.ecken-stops button { position: relative; z-index: 2; background: none; border: 0; padding: 4px 2px; font: 500 13px/1.25 var(--body); color: rgba(242,241,237,.6); cursor: pointer; }
+.ecken-stops button small { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; opacity: .75; margin-top: 2px; }
+.ecken-stops button[aria-pressed="true"] { color: #F2F1ED; }
+.ecken-stops button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 4px; }
+.ecken-range { position: absolute; top: 0; left: 0; width: 100%; height: 30px; margin: 0; opacity: 0; cursor: ew-resize; z-index: 1; }
+.ecken .cmp-hint { display: flex; align-items: center; gap: 8px; margin: 2px 0 0; }
+.ours-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex: none; }
+.miter-text h2 { margin: 0 0 4px; }
+@media (max-width: 560px) { .ecken-stops button { font-size: 12px; } .ecken-cap { font-size: 14px; padding: 32px 14px 12px; } }
 .cmp { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r); background: var(--plate); user-select: none; touch-action: pan-y; }
 .cmp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 1 !important; }
 .miter-figs:has(.cmp) { display: block; } .miter-figs .cmp-hint { grid-column: 1 / -1; }
@@ -753,42 +775,33 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
 
   <section class="sec gut band dark">
     <div class="max" style="display:grid;gap:28px">
-      <div class="sec-head" id="gehrung">
-        <h2>Auf Gehrung gebaut.</h2>
-        <p>Der Unterschied liegt in der Ecke.</p>
-      </div>
-      <div class="miter">
+      <!-- Ecken-Abschnitt neu (14.11.2026, Florian): vier Arten einer Außenecke, Regler mit vier Rastpunkten; ohne Seitenhiebe -->
+      <div class="miter" id="gehrung">
         <div class="miter-text">
-          <p>Eine Fliesenecke lässt sich auf zwei Arten bauen: stumpf gestoßen, dann schließt das Fugmaterial die Kante, oder auf Gehrung. Wir schneiden jede Außenkante auf Gehrung. So ist die Fuge an der Ecke genauso breit wie auf der Fläche: ein umlaufend gleichbleibendes Fugenbild.</p>
-          <p>Darunter steckt, was sich bei uns seit Jahrzehnten auf der Baustelle bewährt: glasiertes Feinsteinzeug aus Italien, echter Fliesenkleber und Fugmaterial aus dem Profibereich. Verlegt wie ein Bad, das lange halten soll.</p>
+          <h2>Wie aus einem Stück.</h2>
+          <p>Ein Fliesenmöbel steht und fällt mit seinen Ecken. Eine Schiene setzt eine Linie, ein stumpfer Stoß eine breite Fuge.</p>
+          <p>Wir wollten keine Unterbrechung. Darum schneiden wir jede Außenkante auf 45° (Taglio) oder setzen einen Viertelstab im Raster der Fliese (Tondo). Die Fuge bleibt rundum gleich – der Körper bleibt ein Körper.</p>
           <p class="kind">Fliesen Verlege GmbH, Konstanz, seit 1977. Jedes Stück von Hand verlegt und verfugt.</p>
-          <figure class="lz-fig lz-dark"><svg class="lz" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img"><title>Querschnitt: stumpf gestoßen gegen Gehrung</title>
-<g class="draw" fill="none" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
-
-<g transform="translate(40 40)">
-<path d="M0 0 H130 V20 H20 V150 H0 Z" />
-<path d="M0 0 H130" stroke="#63A2A7" stroke-width="3"/><path d="M0 0 V150" stroke="#63A2A7" stroke-width="3"/>
-<path d="M-4 -4 L 26 26" stroke="#C9B79A" stroke-width="9" stroke-linecap="butt" opacity=".9"/>
-<text x="0" y="186" font-family="Inter, sans-serif" font-size="14" fill="#444" stroke="none">stumpf: Fuge füllt die Ecke</text>
-</g>
-<g transform="translate(220 40)">
-<path d="M0 0 H130 V20 H20 Z"/><path d="M-2 2 V150 H18 V22 Z"/>
-<path d="M0 0 H130" stroke="#63A2A7" stroke-width="3"/><path d="M-2 2 V150" stroke="#63A2A7" stroke-width="3"/>
-<path d="M-1 1 L 19 21" stroke="#C9B79A" stroke-width="2"/>
-<text x="0" y="186" font-family="Inter, sans-serif" font-size="14" fill="#444" stroke="none">Gehrung: 45°, Fuge 1,5 mm</text>
-</g>
-</g></svg></figure>
         </div>
-        <div class="miter-figs">
-          <!-- Vorher/Nachher-Regler (G2, 13.11.2026) statt Video; Video-Dateien bleiben in bilder/ -->
-          <div class="cmp" id="cmp" style="--p:50%">
-            <img src="bilder/vergleich/gehrung.jpg" loading="eager" alt="Fliesenecke auf Gehrung: die Fuge läuft genauso schmal über die Kante wie auf der Fläche" width="1600" height="1200">
-            <div class="cmp-top"><img src="bilder/vergleich/stumpf.jpg" loading="eager" alt="Stumpf gestoßene Fliesenecke: ein breiter Fugenstreifen füllt die Ecke" width="1600" height="1200"></div>
-            <span class="cmp-lab cmp-l">Stumpf gestoßen</span><span class="cmp-lab cmp-r">Auf Gehrung</span>
-            <div class="cmp-bar" aria-hidden="true"><i></i></div>
-            <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Vergleich verschieben: links stumpf gestoßen, rechts auf Gehrung">
+        <div class="ecken" id="ecken" data-step="0">
+          <div class="ecken-pic">
+            <img src="bilder/ecken/stumpf.jpg" data-i="0" class="on" alt="Stumpf gestoßene Fliesenecke: die Fliesen enden vor der Kante, Fugmaterial schließt die Ecke" width="1600" height="1200">
+            <img src="bilder/ecken/schiene.jpg" data-i="1" alt="Fliesenecke mit Edelstahl-Kantenschiene: eine sichtbare Metalllinie läuft über die Kante" width="1600" height="1200" loading="lazy">
+            <img src="bilder/ecken/gehrung.jpg" data-i="2" alt="Fliesenecke auf Gehrung: beide Fliesen auf 45° geschnitten, die Fuge läuft ohne Bruch um die Ecke" width="1600" height="1200" loading="lazy">
+            <img src="bilder/ecken/viertelstab.jpg" data-i="3" alt="Fliesenecke mit Viertelstab und Kugelecke: gerundete Kantenstücke im Raster der Fliese" width="1600" height="1200" loading="lazy">
+            <p class="ecken-cap" id="ecken-cap" aria-live="polite">Die Fliesen enden vor der Kante, Fugmaterial schließt die Ecke.</p>
           </div>
-          <p class="cmp-hint">Zieh den Regler und vergleiche beide Ecken.</p>
+          <div class="ecken-track">
+            <div class="ecken-line" aria-hidden="true"><i id="ecken-knob"></i></div>
+            <ol class="ecken-stops">
+              <li><button type="button" data-i="0" aria-pressed="true">Stumpf gestoßen</button></li>
+              <li><button type="button" data-i="1" aria-pressed="false">Kantenschiene</button></li>
+              <li class="ours"><button type="button" data-i="2" aria-pressed="false">Auf Gehrung<small>Taglio</small></button></li>
+              <li class="ours"><button type="button" data-i="3" aria-pressed="false">Viertelstab<small>Tondo</small></button></li>
+            </ol>
+            <input class="ecken-range" id="ecken-range" type="range" min="0" max="3" step="1" value="0" aria-label="Eckvariante wählen: stumpf gestoßen, Kantenschiene, auf Gehrung, Viertelstab">
+          </div>
+          <p class="cmp-hint"><span class="ours-dot" aria-hidden="true"></span>So bauen wir: auf Gehrung oder mit Viertelstab.</p>
         </div>
       </div>
     </div>
@@ -2586,17 +2599,28 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     }
     var img = $("hero"); if (img.complete) setTimeout(start, 600); else img.addEventListener("load", function () { setTimeout(start, 600); }, { once: true });
   })();
-  (function () {   /* Vorher/Nachher-Regler: Wert → CSS-Variable; beim ersten Sichtbarwerden einmal sanft hin und her als Hinweis */
-    var c = $("cmp"); if (!c) return; var r = c.querySelector(".cmp-range");
-    function set(v) { c.style.setProperty("--p", v + "%"); }
-    r.addEventListener("input", function () { set(r.value); });
-    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!("IntersectionObserver" in window)) return;
-    var done = false, io = new IntersectionObserver(function (es) { es.forEach(function (e) {
-      if (!e.isIntersecting || done) return; done = true; io.disconnect();
-      var t0 = null; (function step(t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0) / 2200), v = 50 + 30 * Math.sin(k * Math.PI * 2) * (1 - k);
-        if (document.activeElement !== r) { set(v.toFixed(1)); r.value = v; } if (k < 1) requestAnimationFrame(step); })(performance.now());
-    }); }, { threshold: 0.5 }); io.observe(c);
+  (function () {   /* Ecken-Regler (14.11.2026): vier Rastpunkte; beim ersten Sichtbarwerden einmal von stumpf bis Gehrung durchlaufen */
+    var e = $("ecken"); if (!e) return;
+    var imgs = e.querySelectorAll(".ecken-pic img"), btns = e.querySelectorAll(".ecken-stops button"), r = $("ecken-range"), cap = $("ecken-cap"), touched = false;
+    var CAPS = ["Die Fliesen enden vor der Kante, Fugmaterial schließt die Ecke.",
+                "Ein Metallprofil schützt die Kante und zieht eine sichtbare Linie.",
+                "Beide Fliesen auf 45° geschnitten. Die Fuge läuft ohne Bruch um die Ecke.",
+                "Gerundete Kantenstücke im Raster der Fliese, an der Ecke eine Kugelecke."];
+    function set(i) {
+      i = Math.max(0, Math.min(3, Math.round(i)));
+      imgs.forEach(function (im) { im.classList.toggle("on", +im.dataset.i === i); if (+im.dataset.i === i) im.loading = "eager"; });
+      btns.forEach(function (b) { b.setAttribute("aria-pressed", +b.dataset.i === i ? "true" : "false"); });
+      e.style.setProperty("--k", i); e.dataset.step = i; r.value = i; cap.textContent = CAPS[i];
+    }
+    imgs.forEach(function (im) { im.loading = "eager"; });   /* alle vier vorladen, damit das Überblenden ohne Lücke läuft */
+    btns.forEach(function (b) { b.addEventListener("click", function () { touched = true; set(+b.dataset.i); }); });
+    r.addEventListener("input", function () { touched = true; set(+r.value); });
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) { set(2); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (x) {
+      if (!x.isIntersecting) return; io.disconnect();
+      [1, 2].forEach(function (k, n) { setTimeout(function () { if (!touched) set(k); }, 1300 + n * 1500); });
+    }); }, { threshold: 0.55 }); io.observe(e);
   })();
   (function () {   /* Linienzeichnungen zeichnen sich beim Hinscrollen (G3) */
     var list = document.querySelectorAll(".lz"); if (!list.length || !("IntersectionObserver" in window)) return;
