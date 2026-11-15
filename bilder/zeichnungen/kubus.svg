@@ -8,7 +8,7 @@
 <line x1="230.0" y1="560.0" x2="230.0" y2="320.0" stroke="#B8B4AA" stroke-width="0.8"/>
 <line x1="70.0" y1="480.0" x2="310.0" y2="480.0" stroke="#B8B4AA" stroke-width="0.8"/>
 <line x1="70.0" y1="400.0" x2="310.0" y2="400.0" stroke="#B8B4AA" stroke-width="0.8"/>
-<text x="70.0" y="286.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Taglio 101 · Kubus 30 · Ansicht (= alle Seiten)</text>
+<text x="70.0" y="286.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">FMK Cubo 30 · Kubus 30 · Ansicht (= alle Seiten)</text>
 <line x1="70.0" y1="560.0" x2="70.0" y2="600.0" stroke="#2F5D8A" stroke-width="0.7"/>
 <line x1="310.0" y1="560.0" x2="310.0" y2="600.0" stroke="#2F5D8A" stroke-width="0.7"/>
 <line x1="70.0" y1="594.0" x2="310.0" y2="594.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
@@ -25,7 +25,7 @@
 <line x1="450.0" y1="400.0" x2="770.0" y2="400.0" stroke="#B8B4AA" stroke-width="0.8"/>
 <line x1="450.0" y1="320.0" x2="770.0" y2="320.0" stroke="#B8B4AA" stroke-width="0.8"/>
 <rect x="458.0" y="236.0" width="304.0" height="4.0" fill="#8F8A83" stroke="#14161A" stroke-width="0.8"/>
-<text x="450.0" y="198.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">Taglio 102 · Kubus 40 · Ansicht (= alle Seiten)</text>
+<text x="450.0" y="198.0" font-size="15" text-anchor="start" font-weight="bold" fill="#14161A">FMK Cubo 40 · Kubus 40 · Ansicht (= alle Seiten)</text>
 <line x1="450.0" y1="560.0" x2="450.0" y2="600.0" stroke="#2F5D8A" stroke-width="0.7"/>
 <line x1="770.0" y1="560.0" x2="770.0" y2="600.0" stroke="#2F5D8A" stroke-width="0.7"/>
 <line x1="450.0" y1="594.0" x2="770.0" y2="594.0" stroke="#2F5D8A" stroke-width="1" marker-start="url(#tick)" marker-end="url(#tick)"/>
@@ -53,7 +53,7 @@
 <text x="1236.0" y="288.0" font-size="11" text-anchor="start" font-weight="normal" fill="#6B6E70">Trägerplatte (Stärke offen)</text>
 <rect x="908" y="788" width="580" height="140" fill="#FFFFFF" stroke="#14161A" stroke-width="1.2"/>
 <line x1="908" y1="830" x2="1488" y2="830" stroke="#14161A" stroke-width="0.8"/>
-<text x="920" y="816" font-size="20" font-weight="bold" fill="#14161A">FMK Furniture · Taglio 101 / 102 · Kubus 30 / 40</text>
+<text x="920" y="816" font-size="20" font-weight="bold" fill="#14161A">FMK Furniture · FMK Cubo 30 / 40 · Kubus 30 / 40</text>
 <text x="920" y="852" font-size="12.5" fill="#14161A">Prototyp 30 gebaut · Nero matt, Fuge weiß · Korpus Hartschaum-Trägerplatten · Größe 40 Entwurf</text>
 <text x="920" y="872" font-size="12.5" fill="#6B6E70">Maße in cm, Fertigmaße inkl. Fliese · Fliesenraster 10 cm (98,5 mm + ca. 1,5 mm Fuge)</text>
 <text x="920" y="892" font-size="12.5" fill="#6B6E70">Alle Außenkanten auf Gehrung · Zeichnung nicht maßstäblich ausdrucken</text>
