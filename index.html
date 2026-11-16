@@ -785,7 +785,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       <!-- Zwei Linien mit eigener Überschrift, Text vor den Bildern (Florian 16.11.2026: auf den ersten Blick klar machen, was Taglio und Tondo sind) -->
       <div class="linien-head"><h2>Zwei Linien.</h2><p>Gleiche Fliese, gleiches Raster, gleiches Handwerk. Den Unterschied macht die Kante: eckig auf Gehrung geschnitten oder rund mit Viertelstab.</p></div>
       <div class="linien" aria-label="Zwei Linien">
-        <a class="linie" href="#linie-rund"><div class="linie-text"><h3>Tondo <span class="neu">Neu</span></h3><p>Rund. Viertelstäbe in Fliesenfarbe an jeder Außenkante, die Fuge läuft über die Rundung. Jedes Stück 5 cm größer.</p></div>
+        <a class="linie" href="#linie-rund"><div class="linie-text"><h3>Tondo <span class="neu">Neu</span></h3><p>Rund. Viertelstäbe in Fliesenfarbe an jeder Außenkante, die Fuge läuft über die Rundung.</p></div>
           <div class="linie-pics"><img data-pid="p16" alt="Couchtisch Salotto 115"><img data-pid="p17" alt="Kubus Cubo 35"></div><span class="linie-go">Tondo ansehen →</span></a>
         <a class="linie" href="#linie-raster"><div class="linie-text"><h3>Taglio</h3><p>Eckig. Jede Außenkante ein Schnitt auf 45°, das Fugenbild läuft umlaufend gleich bis in jede Ecke.</p></div>
           <div class="linie-pics"><img data-pid="p13" alt="Kaffeebar Banco 90"><img data-pid="p19" alt="Couchtisch Salotto 120"></div><span class="linie-go">Taglio ansehen →</span></a>
@@ -831,10 +831,10 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     <div class="max" style="display:grid;gap:28px">
       <div class="sec-head" id="kollektion">
         <h2>Kollektion</h2>
-        <p>Zwei Linien, ein Handwerk. Die Zahl im Namen ist das Maß: Credenza 130 ist 130 cm breit. Endet sie auf 0, sind die Kanten auf Gehrung geschnitten (Taglio), endet sie auf 5, laufen sie rund mit Viertelstab (Tondo) – das Stück ist dann genau 5 cm größer.</p>
+        <p>Zwei Linien, ein Handwerk. Die Zahl im Namen ist das Maß: Credenza 130 ist 130 cm breit.</p>
       </div>
-      <div class="linie-sec" id="linie-rund"><div class="linie-head"><h3>Tondo <span class="neu">Neu</span></h3><p>Viertelstab statt Gehrung: weiche Kanten, die Fuge läuft über die Rundung. Maße enden auf 5.</p></div><div class="rail all kgrid" id="g-rund"></div></div>
-      <div class="linie-sec" id="linie-raster"><div class="linie-head"><h3>Taglio</h3><p>Jede Außenkante auf Gehrung. Maße enden auf 0.</p></div><div class="rail all kgrid" id="g-raster"></div></div>
+      <div class="linie-sec" id="linie-rund"><div class="linie-head"><h3>Tondo <span class="neu">Neu</span></h3><p>Viertelstab statt Gehrung: weiche Kanten, die Fuge läuft über die Rundung.</p></div><div class="rail all kgrid" id="g-rund"></div></div>
+      <div class="linie-sec" id="linie-raster"><div class="linie-head"><h3>Taglio</h3><p>Jede Außenkante auf Gehrung.</p></div><div class="rail all kgrid" id="g-raster"></div></div>
     </div>
   </section>
 
@@ -1651,7 +1651,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       options: [{ id: "schublade", label: "Unsichtbare Schublade (Push-to-Open)", short: "Schublade", price: 390 }, { id: "pflanz", label: "Pflanzfeld 30 × 20 cm mit Einsatz", short: "Pflanzfeld", price: 290 }] },
     { id: "p21", focus: true, studio: "bilder/studio/tondo232.jpg", raum: "bilder/raum/tondo232.jpg", coll: "rund", name: "Mensola 35 / 65 / 85 / 105", stueck: "Mensola", series: "Tondo", no: "85", slug: "mensola-85", oldSlug: ["tondo-231", "wandregal-rund"], kind: "Wandregal", form: "regal85", base: 390, show: uniItem("regal85","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
       sizes: [{ no: "35", label: "35 cm", form: "regal35", base: 250 }, { no: "65", label: "65 cm", form: "regal65", base: 320 }, { no: "85", label: "85 cm", form: "regal85", base: 390 }, { no: "105", label: "105 cm", form: "regal105", base: 460 }],
-      options: [{ id: "haken", label: "3 Haken unten, schwarz", short: "Haken", price: 59 }] },
+      options: [{ id: "haken", label: "Haken unten, schwarz, in den Fugen", short: "Haken", price: 60, perPiece: 20, count: { regal35: 2, regal65: 3, regal85: 3, regal105: 3 }, unit: "Haken" }] },   /* Preis je Haken, Anzahl je Länge (Florian 16.11.2026) */
     { id: "p20", hidden: true, coll: "rund", name: "Rund Pflanzfeld", kind: "Couchtisch mit Pflanzfeld und Schublade", form: "rundPflanz", base: 3990, show: uniItem("rundPflanz","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"] },
     { id: "p17", twin: "p7", focus: true, studio: "bilder/studio/tondo201.jpg", raum: "bilder/raum/tondo201.jpg", coll: "rund", name: "Cubo 35 / 45", stueck: "Cubo", series: "Tondo", no: "35", slug: "cubo-35", oldSlug: ["tondo-201", "rund-kubus"], kind: "Kubus", form: "rundKubus", base: 790, sizes: [{ no: "35", label: "35 cm", form: "rundKubus", base: 790 }, { no: "45", label: "45 cm", form: "rundKubus45", base: 1190 }],
       options: [{ id: "filz", label: "Sitzauflage Wollfilz 5 mm, rutschfest", short: "Filzauflage", price: 49 }], show: uniItem("rundKubus","vanadio"), chips: ["vanadio","salvia","kontrast","salbei","vermiglio"] },
@@ -2274,7 +2274,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     t.hidden = !p.focus || (collOf(p) === "rund" && !!p.twin);
 
     var tr = document.createElement("tr");
-    var optsSmall = p.options ? '<br><small style="color:var(--muted)">Optionen: ' + p.options.map(function (o) { return o.short + " + " + eur(o.price); }).join(", ") + "</small>" : "";
+    var optsSmall = p.options ? '<br><small style="color:var(--muted)">Optionen: ' + p.options.map(function (o) { return o.short + " + " + (o.perPiece ? eur(o.perPiece) + " je " + (o.unit || "Stück") : eur(o.price)); }).join(", ") + "</small>" : "";
     tr.innerHTML = "<td>" + p.name + " · " + p.kind + optsSmall + '</td><td class="dim">' + F[p.form].dims + '</td><td class="n">' + eur(p.base) + '</td><td class="n">' + eur(surcharged(p.base)) + "</td>";
     if (p.focus && !p.sizes) $("price-body").appendChild(tr);
     if (p.focus && p.sizes) p.sizes.forEach(function (z) {
@@ -2329,7 +2329,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     var vo = $("v-opts"); vo.hidden = !activeProduct.options; vo.innerHTML = "";
     (activeProduct.options || []).forEach(function (o) {
       var l = document.createElement("label"); l.className = "v-opt";
-      l.innerHTML = '<input type="checkbox"' + (state.opts && state.opts[o.id] ? " checked" : "") + '><span>' + o.label + '</span><b>+ ' + eur(o.price) + '</b>';
+      l.innerHTML = '<input type="checkbox"' + (state.opts && state.opts[o.id] ? " checked" : "") + '><span>' + optLabel(o, state.form) + '</span><b>+ ' + eur(optPrice(o, state.form)) + '</b>';
       l.querySelector("input").addEventListener("change", function (e) {
         state.opts = state.opts || {}; state.opts[o.id] = e.target.checked;
         if (/^schublade/.test(o.id)) {
@@ -2553,7 +2553,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     extra: [["Schublade", "4 Fliesen breit, Vollauszug 45 cm, Öffnen per Druck (Push-to-Open)"], ["Pflanzfeld", "30 × 20 cm, 20 cm tief, Einsatz herausnehmbar"], ["Unterseite", "4 Füße, 1 cm Schattenfuge, Gesamthöhe 41 cm"]], zeichnung: "bilder/zeichnungen/couchtisch.svg" };
   DETAILS.p21 = { status: "draft", desc: "Ein Regal, das zu schweben scheint: nur 5 cm schlank, vorne weich gerundet, die Halterung unsichtbar. Für Bücher, Pflanzen und Lieblingsstücke, im Bad auch für Handtücher und Seife.",
     korpus: "Kern aus drei Lagen Multiplex, verleimt und vorne halbrund gefräst", gewicht: "ca. 8 / 10,5 / 13 kg (65 / 85 / 105 cm)", versand: "als Paket, gut geschützt",
-    extra: [["Option Haken", "3 schwarze Haken unten (Edelstahl, pulverbeschichtet), symmetrisch in den Fugen: je die erste Fuge von außen und die Mittelfuge – für Schlüssel und Jacken im Flur, + 59 €"], ["Montage-Set", "verdeckte Edelstahl-Träger mit Neigungsverstellung, Bohrschablone, Dübel und Edelstahlschrauben, bebilderte Anleitung"], ["Tragkraft", "bis ca. 15 kg (wird mit dem Prototyp geprüft)"], ["Wand", "für massive Wände; für Trockenbau auf Anfrage"], ["Montage", "auf Wunsch durch uns am Bodensee und in der Region"]], zeichnung: "bilder/zeichnungen/wandregal-rund.svg" };
+    extra: [["Option Haken", "schwarze Haken unten (Edelstahl, pulverbeschichtet), symmetrisch in den Fugen: beim 35er zwei, ab 65 cm drei (erste Fuge von außen und Mittelfuge) – für Schlüssel und Jacken im Flur, 20 € je Haken"], ["Montage-Set", "verdeckte Edelstahl-Träger mit Neigungsverstellung, Bohrschablone, Dübel und Edelstahlschrauben, bebilderte Anleitung"], ["Tragkraft", "bis ca. 15 kg (wird mit dem Prototyp geprüft)"], ["Wand", "für massive Wände; für Trockenbau auf Anfrage"], ["Montage", "auf Wunsch durch uns am Bodensee und in der Region"]], zeichnung: "bilder/zeichnungen/wandregal-rund.svg" };
   DETAILS.p20 = { status: "draft", desc: "Der Pflanzfeld-Couchtisch mit weichen Kanten: Viertelstäbe in Fliesenfarbe an allen Außenkanten, hinten rechts ein längliches Pflanzfeld, 30 × 20 cm, einfach im Fliesenfeld ausgespart. Vorne eine Schublade, die man nicht sieht, ihre Front sind Fliesen im Raster. Unten ungefliest auf kleinen Füßen.",
     korpus: "Hartschaum-Trägerplatten, Schubkasten aus Multiplex eingebaut, Pflanzfeld abgedichtet", gewicht: "folgt", versand: "Spedition oder Lieferung in der Region",
     extra: [["Schublade", "3 Fliesen breit, Vollauszug 40 cm, Öffnen per Druck (Push-to-Open)"], ["Pflanzfeld", "30 × 20 cm, im Fliesenfeld ausgespart, Kante auf Gehrung, Einsatz herausnehmbar"], ["Kanten", "Viertelstab 2,5 cm in 10-cm-Stücken, 8 Kugelecken"]] };
@@ -2575,7 +2575,10 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
   var STATUS_TXT = { proto: "Prototyp gebaut", build: "Prototyp im Bau", draft: "Entwurf" };
   /* Längen (p.sizes): Grundpreis hängt von der gewählten Form ab (11.11.2026, Wandregal) */
   /* Optionen (12.11.2026): p.options = [{ id, label, short, price }], gewählt in s.opts; Aufpreis fest, ohne 25 %-Zuschlag */
-  function optsPrice(p, s) { return (p.options || []).reduce(function (a, o) { return a + (s.opts && s.opts[o.id] ? o.price : 0); }, 0); }
+  /* Optionen mit Stückpreis (z. B. Haken): Preis = Anzahl je Größe × Stückpreis (16.11.2026) */
+  function optPrice(o, form) { return o.perPiece && o.count && o.count[form] ? o.count[form] * o.perPiece : o.price; }
+  function optLabel(o, form) { return o.perPiece && o.count && o.count[form] ? o.label + " (" + o.count[form] + " " + o.unit + ")" : o.label; }
+  function optsPrice(p, s) { return (p.options || []).reduce(function (a, o) { return a + (s.opts && s.opts[o.id] ? optPrice(o, s.form) : 0); }, 0); }
   function optsText(p, s) { var l = (p.options || []).filter(function (o) { return s.opts && s.opts[o.id]; }).map(function (o) { return o.short; }); return l.length ? ", mit " + l.join(" und ") : ""; }
   function baseOf(p, s) { if (p.sizes) { var z = p.sizes.filter(function (x) { return x.form === s.form; })[0]; if (z) return z.base; } return p.base; }
   function minBase(p) { return p.sizes ? Math.min.apply(null, p.sizes.map(function (x) { return x.base; })) : p.base; }
@@ -2603,7 +2606,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     if (p.studio) gal.push({ src: p.studio, alt: p.kind + " " + p.name + " (Visualisierung)", label: "Bild", cover: true });
     gal.push({ src: (cards[p.id].photo || p.studio) ? renderImg(p) : cards[p.id].img.src, alt: p.kind + " " + p.name + " als 3D-Ansicht", label: "3D", cover: false });
     var rows = [["Maße", f.dims + " (B × T × H)"], ["Fliesen", collOf(p) === "atelier" ? "Sonderserie: " + f.tile + ", Farben und Oberflächen je nach Serie, Auswahl auf Anfrage" : "Glasiertes Feinsteinzeug " + f.tile.replace("Fliese ", "") + (p.proto ? ", Prototyp: " + p.proto : "") + ", 54 Farben wählbar"], ["Fuge", "Fugenmörtel, 27 Farben ohne Aufpreis; bunte Fugen als Reaktionsharz-Sonderfuge"], [collOf(p) === "atelier" ? "Serie" : "Linie", COLLS[collOf(p)].name + (collOf(p) !== "raster" ? " (Entwurf)" : "")], ["Kanten", collOf(p) === "rund" ? (f.parts()[0].t === "rbox" ? "Viertelstab-Formstücke in Fliesenfarbe, Fugen im Raster der Flächen" : "Gerundete Formen (Entwurf, wird überarbeitet)") : "Alle Außenkanten auf Gehrung" + (p.twin ? "" : (p.id !== "p14" && p.series === "Taglio" ? " · auf Anfrage auch mit Viertelstab (Tondo)" : ""))], ["Kanten-Partner", p.twin ? (function () { var t = PRODUCTS.filter(function (x) { return x.id === p.twin; })[0]; return t ? t.name + " (" + (collOf(t) === "rund" ? "mit Viertelstab" : "auf Gehrung") + "), im Konfigurator umschaltbar" : ""; })() : ""], ["Korpus", d.korpus]].filter(function (r) { return r[1] !== ""; }).concat(d.extra).concat([["Gewicht", d.gewicht], ["Lieferzeit", LIEFERZEIT], ["Lieferung", d.versand], ["Pflege", PFLEGE]]);
-    if (p.options) rows.splice(1, 0, ["Optionen", p.options.map(function (o) { return o.label + " + " + eur(o.price); }).join("<br>") + '<br><small>wählbar im Konfigurator</small>']);
+    if (p.options) rows.splice(1, 0, ["Optionen", p.options.map(function (o) { return o.label + " + " + (o.perPiece ? eur(o.perPiece) + " je " + o.unit + " (" + Object.keys(o.count).map(function (k) { return F[k].dims.split(" ×")[0] + " cm: " + o.count[k]; }).join(" · ") + ")" : eur(o.price)); }).join("<br>") + '<br><small>wählbar im Konfigurator</small>']);
     if (p.sizes) {
       var lang = /^regal/.test(p.form);   /* Wandregal: Längen; Kubus: Größen (12.11.2026) */
       rows[0] = ["Maße", p.sizes.map(function (z) { return F[z.form].dims; }).join("<br>") + " <small>(B × T × H)</small>"];
