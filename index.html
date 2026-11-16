@@ -956,6 +956,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
           <div class="ctl">
             <div class="ctl-label"><span>Farbwelt</span><span id="v-col-name"></span></div>
             <div class="chips" id="v-collection"></div>
+            <p id="v-noform" hidden style="margin:6px 0 0;font-size:13px;color:var(--muted)">Mit Viertelstab nicht in Vermiglio und Cromo: In diesen Farben gibt es die Formstücke nicht.</p>
             <p class="v-lager" id="v-lager"></p>
           </div>
           <div class="own">
@@ -1432,6 +1433,16 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
   ];
   var FIN = {}, TILES = { matt: [], glanz: [] };
   [[FLIESE_MATT, "matt"], [FLIESE_GLANZ, "glanz"]].forEach(function (x) { x[0].forEach(function (c) { C[c[0]] = [c[1], c[2]]; FIN[c[0]] = x[1]; TILES[x[1]].push(c[0]); }); });
+  /* Tondo (16.11.2026): Formstücke (Viertelstab, Kugelecke) gibt es nicht in allen Farben → diese Farben bei Tondo nicht anbieten */
+  var NO_FORM = { torba: 1, cromo: 1, vermiglio: 1, kiwi: 1, galassia: 1, pioggia: 1, navy: 1 };
+  function isRund(p) { return !!p && collOf(p) === "rund"; }
+  function tilesFor(p, f) { return isRund(p) ? TILES[f].filter(function (k) { return !NO_FORM[k]; }) : TILES[f]; }
+  function nearestIn(k, list) {
+    if (list.indexOf(k) >= 0) return k;
+    var a = rgbOf(C[k][1]), best = list[0], bd = 1e9;
+    list.forEach(function (t) { var b = rgbOf(C[t][1]), d = Math.pow(a[0]-b[0],2) + Math.pow(a[1]-b[1],2) + Math.pow(a[2]-b[2],2); if (d < bd) { bd = d; best = t; } });
+    return best;
+  }
   function rgbOf(h) { var n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; }
   function nearest(k, f) {
     if (FIN[k] === f) return k;
@@ -1647,23 +1658,23 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     { id: "p11", name: "Scala 120", stueck: "Scala", series: "Taglio", no: "120", slug: "scala-120", oldSlug: ["taglio-151", "stufe"], kind: "Stufenregal", form: "stufe", base: 3600, show: uniItem("stufe","vermiglio"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
     { id: "p12", hidden: true, coll: "rund", name: "Kapsel", kind: "Sitzbank", form: "kapsel", base: 4900, show: it("kapsel","akzent",["cobalto","marina","notte"],"n20"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
     /* Neue Entwürfe für die Kollektionen „Rund“ und „Atelier“ (11.11.2026), Preise Annahmen */
-    { id: "p16", twin: "p19", focus: true, studio: "bilder/studio/tondo211.jpg", raum: "bilder/raum/tondo211.jpg", coll: "rund", name: "Salotto 115", stueck: "Salotto", series: "Tondo", no: "115", slug: "salotto-115", oldSlug: ["tondo-211", "couchtisch-rund"], kind: "Couchtisch", form: "rundTisch", base: 3590, show: uniItem("rundTisch","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"] ,
+    { id: "p16", twin: "p19", focus: true, studio: "bilder/studio/tondo211.jpg", raum: "bilder/raum/tondo211.jpg", coll: "rund", name: "Salotto 115", stueck: "Salotto", series: "Tondo", no: "115", slug: "salotto-115", oldSlug: ["tondo-211", "couchtisch-rund"], kind: "Couchtisch", form: "rundTisch", base: 3590, show: uniItem("rundTisch","salbei"), chips: ["salbei","salvia","kontrast","vanadio","kobalt"] ,
       options: [{ id: "schublade", label: "Unsichtbare Schublade (Push-to-Open)", short: "Schublade", price: 390 }, { id: "pflanz", label: "Pflanzfeld 30 × 20 cm mit Einsatz", short: "Pflanzfeld", price: 290 }] },
-    { id: "p21", focus: true, studio: "bilder/studio/tondo232.jpg", raum: "bilder/raum/tondo232.jpg", coll: "rund", name: "Mensola 35 / 65 / 85 / 105", stueck: "Mensola", series: "Tondo", no: "85", slug: "mensola-85", oldSlug: ["tondo-231", "wandregal-rund"], kind: "Wandregal", form: "regal85", base: 390, show: uniItem("regal85","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
+    { id: "p21", focus: true, studio: "bilder/studio/tondo232.jpg", raum: "bilder/raum/tondo232.jpg", coll: "rund", name: "Mensola 35 / 65 / 85 / 105", stueck: "Mensola", series: "Tondo", no: "85", slug: "mensola-85", oldSlug: ["tondo-231", "wandregal-rund"], kind: "Wandregal", form: "regal85", base: 390, show: uniItem("regal85","salvia"), chips: ["salvia","kontrast","salbei","vanadio","kobalt"],
       sizes: [{ no: "35", label: "35 cm", form: "regal35", base: 250 }, { no: "65", label: "65 cm", form: "regal65", base: 320 }, { no: "85", label: "85 cm", form: "regal85", base: 390 }, { no: "105", label: "105 cm", form: "regal105", base: 460 }],
       options: [{ id: "haken", label: "Haken unten, schwarz, in den Fugen", short: "Haken", price: 60, perPiece: 20, count: { regal35: 2, regal65: 3, regal85: 3, regal105: 3 }, unit: "Haken" }] },   /* Preis je Haken, Anzahl je Länge (Florian 16.11.2026) */
     { id: "p20", hidden: true, coll: "rund", name: "Rund Pflanzfeld", kind: "Couchtisch mit Pflanzfeld und Schublade", form: "rundPflanz", base: 3990, show: uniItem("rundPflanz","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"] },
     { id: "p17", twin: "p7", focus: true, studio: "bilder/studio/tondo201.jpg", raum: "bilder/raum/tondo201.jpg", coll: "rund", name: "Cubo 35 / 45", stueck: "Cubo", series: "Tondo", no: "35", slug: "cubo-35", oldSlug: ["tondo-201", "rund-kubus"], kind: "Kubus", form: "rundKubus", base: 790, sizes: [{ no: "35", label: "35 cm", form: "rundKubus", base: 790 }, { no: "45", label: "45 cm", form: "rundKubus45", base: 1190 }],
-      options: [{ id: "filz", label: "Sitzauflage Wollfilz 5 mm, rutschfest", short: "Filzauflage", price: 49 }], show: uniItem("rundKubus","vanadio"), chips: ["vanadio","salvia","kontrast","salbei","vermiglio"] },
+      options: [{ id: "filz", label: "Sitzauflage Wollfilz 5 mm, rutschfest", short: "Filzauflage", price: 49 }], show: uniItem("rundKubus","vanadio"), chips: ["vanadio","salvia","kontrast","salbei","kobalt"] },
     /* Partnerstücke Tondo (Florian 14.11.2026, „Ein Möbel, zwei Kanten“), Entwürfe, Preise Annahmen */
     { id: "p23", hidden: true, coll: "rund", name: "Banco 95", stueck: "Banco", series: "Tondo", no: "95", slug: "banco-95", oldSlug: ["tondo-221"], kind: "Kaffeebar", form: "rundBar", base: 3890, show: uniItem("rundBar","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"] },
-    { id: "p24", twin: "p15", focus: true, coll: "rund", name: "Vaso 55 / 45", stueck: "Vaso", series: "Tondo", no: "55", slug: "vaso-55", oldSlug: ["tondo-241"], kind: "Pflanzkübel", form: "rundKuebel", base: 1190, show: uniItem("rundKuebel","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
+    { id: "p24", twin: "p15", focus: true, coll: "rund", name: "Vaso 55 / 45", stueck: "Vaso", series: "Tondo", no: "55", slug: "vaso-55", oldSlug: ["tondo-241"], kind: "Pflanzkübel", form: "rundKuebel", base: 1190, show: uniItem("rundKuebel","salvia"), chips: ["salvia","kontrast","salbei","vanadio","kobalt"],
       sizes: [{ no: "55", label: "55 cm", form: "rundKuebel", base: 1190 }, { no: "45", label: "45 cm", form: "rundKuebel45", base: 850 }],
       options: [{ id: "einsatz", label: "Herausnehmbarer Pflanzeinsatz", short: "Einsatz", price: 90 }, { id: "ablauf", label: "Wasserablauf mit Füßen, für draußen", short: "Ablauf", price: 90 }] },
     /* Sideboard (Florian 15.11.2026): drei Breiten, Taglio und Tondo als Partner; Nummern 153–155 / 253–255 (Vorschlag), Preise Annahmen */
     { id: "p25", twin: "p26", focus: true, studio: "bilder/studio/sideboard.jpg", name: "Credenza 110 / 130 / 170", stueck: "Credenza", series: "Taglio", no: "130", slug: "credenza-130", oldSlug: ["taglio-154"], kind: "Sideboard", form: "sbT130", base: 4290, show: uniItem("sbT130","salvia"), chips: ["salvia","kontrast","salbei","vanadio","vermiglio"],
       sizes: [{ no: "110", label: "110 cm", form: "sbT110", base: 3690 }, { no: "130", label: "130 cm", form: "sbT130", base: 4290 }, { no: "170", label: "170 cm", form: "sbT170", base: 5190 }] },
-    { id: "p26", twin: "p25", focus: true, studio: "bilder/studio/sideboard-tondo.jpg", coll: "rund", name: "Credenza 115 / 135 / 175", stueck: "Credenza", series: "Tondo", no: "135", slug: "credenza-135", oldSlug: ["tondo-254"], kind: "Sideboard", form: "sbR135", base: 5090, show: uniItem("sbR135","salbei"), chips: ["salbei","salvia","kontrast","vanadio","vermiglio"],
+    { id: "p26", twin: "p25", focus: true, studio: "bilder/studio/sideboard-tondo.jpg", coll: "rund", name: "Credenza 115 / 135 / 175", stueck: "Credenza", series: "Tondo", no: "135", slug: "credenza-135", oldSlug: ["tondo-254"], kind: "Sideboard", form: "sbR135", base: 5090, show: uniItem("sbR135","salbei"), chips: ["salbei","salvia","kontrast","vanadio","kobalt"],
       sizes: [{ no: "115", label: "115 cm", form: "sbR115", base: 4490 }, { no: "135", label: "135 cm", form: "sbR135", base: 5090 }, { no: "175", label: "175 cm", form: "sbR175", base: 5990 }] },
     /* Nachttisch (Entwurf Florian + Schwester, 15.11.2026): Nummer 103 (Vorschlag, kleine Stücke 10x), Preis Annahme */
     { id: "p27", focus: true, studio: "bilder/studio/nachttisch.jpg", name: "Comodino 40", stueck: "Comodino", series: "Taglio", no: "40", slug: "comodino-40", oldSlug: ["taglio-103"], kind: "Nachttisch", form: "nacht60", base: 1290, show: uniItem("nacht60","vermiglio"), chips: ["vermiglio","salvia","kontrast","salbei","vanadio"] },
@@ -2368,7 +2379,8 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
       (fugeExtra() ? " Bunte Fuge aus Reaktionsharz (Sondermischung): pauschal + " + eur(fugeExtra()) + ", Lieferzeit + " + SONDERFUGE_LIEFERZEIT + "." : ""));
     $("v-col-name").textContent = m ? m.label : "";
     $("v-lager").textContent = m && m.lager && activeProduct.focus && /kubus|regal/i.test(state.form) ? "Auf Lager: sofort lieferbar." : (m ? "Wird nach Bestellung für dich gefertigt." : "");
-    Array.prototype.forEach.call($("v-collection").children, function (b) { b.setAttribute("aria-pressed", m && b.dataset.u === m.id ? "true" : "false"); });
+    Array.prototype.forEach.call($("v-collection").children, function (b) { b.setAttribute("aria-pressed", m && b.dataset.u === m.id ? "true" : "false"); b.hidden = isRund(activeProduct) && !!NO_FORM[uniBy(b.dataset.u).tile]; });
+    var nf = $("v-noform"); if (nf) nf.hidden = !isRund(activeProduct);
     /* Muster reduziert (Florian 12.11.2026): nur Uni, Schachbrett, Getaucht. Akzente, Verlauf, Zweifarbig, Streifen entfallen (Streifen liefen über Kanten nicht durch). */
     var mg = motifGrid(state);
     var list = ["uni", "schach", "tauchen"].concat(mg ? ["motiv"] : []).map(function (k) { return [k, PATTERNS[k][0]]; });
@@ -2406,15 +2418,15 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     for (var i = 0; i < needed(state); i++) (function (i) {
       var w = document.createElement("div"); w.className = "ctl";
       w.innerHTML = '<div class="ctl-label"><span>' + (state.pattern === "motiv" ? ["Grundfarbe", "Motivfarbe"][i] : "Fliese" + (needed(state) > 1 ? " " + (i + 1) : "")) + "</span><span>" + nm(state.cols[i]) + (state.finish === "matt" ? " matt" : " glänzend") + '</span></div><div class="swatches"></div>';
-      swatchRow(w.querySelector(".swatches"), TILES[state.finish], state.cols[i], function (k) { state.cols[i] = k; apply(); });
+      swatchRow(w.querySelector(".swatches"), tilesFor(activeProduct, state.finish), state.cols[i], function (k) { state.cols[i] = k; apply(); });
       box.appendChild(w);
     })(i);
     $("v-grout-name").textContent = nm(state.grout) + (IS_SONDER[state.grout] ? " (Sonderfuge)" : "");
     swatchRow($("v-grout"), GROUT_KEYS, state.grout, function (k) { state.grout = k; apply(); });
     swatchRow($("v-grout-s"), SONDER_KEYS, state.grout, function (k) { state.grout = k; apply(); });
     $("v-grout-s-label").textContent = "Sonderfarbe, Reaktionsharz · + " + eur(activeProduct.fugeAufpreis || SONDERFUGE_AUFPREIS);
-    pills($("v-finish"), [["matt", "Matt (" + TILES.matt.length + ")"], ["glanz", "Glänzend (" + TILES.glanz.length + ")"]], state.finish, function (k) {
-      state.finish = k; state.cols = state.cols.map(function (c) { return nearest(c, k); }); apply();
+    pills($("v-finish"), [["matt", "Matt (" + tilesFor(activeProduct, "matt").length + ")"], ["glanz", "Glänzend (" + tilesFor(activeProduct, "glanz").length + ")"]], state.finish, function (k) {
+      state.finish = k; state.cols = state.cols.map(function (c) { return nearestIn(nearest(c, k), tilesFor(activeProduct, k)); }); apply();
     });
     setFuge(state.grout);
   }
@@ -2505,7 +2517,9 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     selectProduct(tw, ns, false);
   }
   function selectProduct(p, s, scroll, view) {
-    activeProduct = p; state = JSON.parse(JSON.stringify(s)); drawerPos = 0; drawerTarget = 0; drawerKeep = false;
+    activeProduct = p; state = JSON.parse(JSON.stringify(s));
+    if (isRund(p)) state.cols = state.cols.map(function (c) { return nearestIn(c, tilesFor(p, FIN[c] || state.finish)); });
+    drawerPos = 0; drawerTarget = 0; drawerKeep = false;
     Object.keys(thumbs).forEach(function (id) { thumbs[id].setAttribute("aria-pressed", id === p.id || id === p.twin ? "true" : "false"); });
     photoIdx = 0;
     $("v-edge").textContent = collOf(p) === "rund" && F[p.form].parts()[0].t === "rbox" ? "Alle Kanten mit Viertelstab, Fugen laufen über die Kante weiter." : "Alle Außenkanten auf Gehrung geschnitten.";
@@ -2605,7 +2619,7 @@ main > .sec:not(.band):not(.dark) + .sec:not(.band):not(.dark) > .max::before { 
     if (p.raum) { var rg = { src: p.raum, alt: p.kind + " " + p.name + " im Wohnraum (Visualisierung)", label: "Raum", cover: true }; if (p.photos) gal.push(rg); else gal.unshift(rg); }   /* Raumbild (G8) */
     if (p.studio) gal.push({ src: p.studio, alt: p.kind + " " + p.name + " (Visualisierung)", label: "Bild", cover: true });
     gal.push({ src: (cards[p.id].photo || p.studio) ? renderImg(p) : cards[p.id].img.src, alt: p.kind + " " + p.name + " als 3D-Ansicht", label: "3D", cover: false });
-    var rows = [["Maße", f.dims + " (B × T × H)"], ["Fliesen", collOf(p) === "atelier" ? "Sonderserie: " + f.tile + ", Farben und Oberflächen je nach Serie, Auswahl auf Anfrage" : "Glasiertes Feinsteinzeug " + f.tile.replace("Fliese ", "") + (p.proto ? ", Prototyp: " + p.proto : "") + ", 54 Farben wählbar"], ["Fuge", "Fugenmörtel, 27 Farben ohne Aufpreis; bunte Fugen als Reaktionsharz-Sonderfuge"], [collOf(p) === "atelier" ? "Serie" : "Linie", COLLS[collOf(p)].name + (collOf(p) !== "raster" ? " (Entwurf)" : "")], ["Kanten", collOf(p) === "rund" ? (f.parts()[0].t === "rbox" ? "Viertelstab-Formstücke in Fliesenfarbe, Fugen im Raster der Flächen" : "Gerundete Formen (Entwurf, wird überarbeitet)") : "Alle Außenkanten auf Gehrung" + (p.twin ? "" : (p.id !== "p14" && p.series === "Taglio" ? " · auf Anfrage auch mit Viertelstab (Tondo)" : ""))], ["Kanten-Partner", p.twin ? (function () { var t = PRODUCTS.filter(function (x) { return x.id === p.twin; })[0]; return t ? t.name + " (" + (collOf(t) === "rund" ? "mit Viertelstab" : "auf Gehrung") + "), im Konfigurator umschaltbar" : ""; })() : ""], ["Korpus", d.korpus]].filter(function (r) { return r[1] !== ""; }).concat(d.extra).concat([["Gewicht", d.gewicht], ["Lieferzeit", LIEFERZEIT], ["Lieferung", d.versand], ["Pflege", PFLEGE]]);
+    var rows = [["Maße", f.dims + " (B × T × H)"], ["Fliesen", collOf(p) === "atelier" ? "Sonderserie: " + f.tile + ", Farben und Oberflächen je nach Serie, Auswahl auf Anfrage" : "Glasiertes Feinsteinzeug " + f.tile.replace("Fliese ", "") + (p.proto ? ", Prototyp: " + p.proto : "") + (isRund(p) ? ", " + (tilesFor(p, "matt").length + tilesFor(p, "glanz").length) + " Farben wählbar (alle mit passenden Formstücken)" : ", 54 Farben wählbar")], ["Fuge", "Fugenmörtel, 27 Farben ohne Aufpreis; bunte Fugen als Reaktionsharz-Sonderfuge"], [collOf(p) === "atelier" ? "Serie" : "Linie", COLLS[collOf(p)].name + (collOf(p) !== "raster" ? " (Entwurf)" : "")], ["Kanten", collOf(p) === "rund" ? (f.parts()[0].t === "rbox" ? "Viertelstab-Formstücke in Fliesenfarbe, Fugen im Raster der Flächen" : "Gerundete Formen (Entwurf, wird überarbeitet)") : "Alle Außenkanten auf Gehrung" + (p.twin ? "" : (p.id !== "p14" && p.series === "Taglio" ? " · auf Anfrage auch mit Viertelstab (Tondo)" : ""))], ["Kanten-Partner", p.twin ? (function () { var t = PRODUCTS.filter(function (x) { return x.id === p.twin; })[0]; return t ? t.name + " (" + (collOf(t) === "rund" ? "mit Viertelstab" : "auf Gehrung") + "), im Konfigurator umschaltbar" : ""; })() : ""], ["Korpus", d.korpus]].filter(function (r) { return r[1] !== ""; }).concat(d.extra).concat([["Gewicht", d.gewicht], ["Lieferzeit", LIEFERZEIT], ["Lieferung", d.versand], ["Pflege", PFLEGE]]);
     if (p.options) rows.splice(1, 0, ["Optionen", p.options.map(function (o) { return o.label + " + " + (o.perPiece ? eur(o.perPiece) + " je " + o.unit + " (" + Object.keys(o.count).map(function (k) { return F[k].dims.split(" ×")[0] + " cm: " + o.count[k]; }).join(" · ") + ")" : eur(o.price)); }).join("<br>") + '<br><small>wählbar im Konfigurator</small>']);
     if (p.sizes) {
       var lang = /^regal/.test(p.form);   /* Wandregal: Längen; Kubus: Größen (12.11.2026) */
